@@ -13,6 +13,7 @@
     "@googlemaps/js-api-loader": "^1.15.2",
     "@react-google-maps/api": "^2.18.1",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
     "install": "^0.13.0",
