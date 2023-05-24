@@ -28,6 +28,8 @@ html {
 body {
   font-family: 'Raleway', Roboto, Oxygen;
   color: rgb(var(--foreground-rgb));
+  max-width: 1980px;
+  margin: auto;
   /* background: linear-gradient(
       to bottom,
       transparent,

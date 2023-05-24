@@ -29,13 +29,13 @@ const Navbar = () => {
         </Link>
         <ul style={{color: `${textColor}`}} className='hidden sm:flex'>
           <li className='p-4'>
-            <Link href='/' scroll={false}>Home</Link>
+            <Link href='/#hero' scroll={false}>Home</Link>
           </li>
           <li className='p-4'>
             <Link href='/#gallery' scroll={false}>Gallery</Link>
           </li>
           <li className='p-4'>
-            <Link href='/trails'>Trails</Link>
+            <Link href='/trails' scroll={false}>Trails</Link>
           </li>
           <li className='p-4'>
             <Link href='/#contact' scroll={false}>Contact</Link>
@@ -51,16 +51,16 @@ const Navbar = () => {
         : 'sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300'}> 
           <ul>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/'>Home</Link>
+              <Link href='/' onClick={handleNav}>Home</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/#gallery'>Gallery</Link>
+              <Link href='/#gallery' scroll={false} onClick={handleNav}>Gallery</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/trails'>Trails</Link>
+              <Link href='/trails' scroll={false} onClick={handleNav} >Trails</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/#contact'>Contact</Link>
+              <Link href='/#contact' scroll={false} onClick={handleNav}>Contact</Link>
             </li>
           </ul>
         </div>
