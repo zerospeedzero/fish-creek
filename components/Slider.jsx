@@ -15,9 +15,10 @@ const Slider = ({slides}) => {
   if (!Array.isArray(slides) || slides.length <=0 ) {
     return null;
   }
-  useEffect(() => {
-    setInterval(() => {nextSlide}, 1000);
-  }, [])
+  setInterval(() => {nextSlide}, 1000);
+  // useEffect(() => {
+  //   setInterval(() => {nextSlide}, 1000);
+  // }, [])
   return (
     <div id='gallery' className='max-w[1240px] mx-auto pt-[90px]'>
       <h1 className='text-2xl font-bold text-black text-center p-4'>Gallery of Fish Creek</h1>

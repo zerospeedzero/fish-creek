@@ -1,12 +1,6 @@
 import { useState, useRef } from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  InfoWindow,
-  onLoad,
-  Marker,
-  Autocomplete,
-} from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, InfoWindow, onLoad, Marker, MarkerF, Autocomplete} from "@react-google-maps/api";
+import {MarkerData} from './MarkerData.js';
 
 const Map = () => {
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -14,7 +8,6 @@ const Map = () => {
   const [currentLocation, setCurrentLocation] = useState(null);
   const autocompleteRef = useRef(null);
   const [address, setAddress] = useState("");
-
   // laod script for google map
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
@@ -30,11 +23,14 @@ const Map = () => {
   const divStyle = {
     background: `white`,
     border: `1px solid #ccc`,
-    padding: 15
+    padding: 15,
   }
 
   const onLoad = infoWindow => {
     console.log('infoWindow: ', infoWindow)
+  }
+  const onMarkerLoad = marker => {
+    console.log('marker: ', marker)
   }
 
   // handle place change on search
@@ -127,10 +123,17 @@ const Map = () => {
             <h1>InfoWindow</h1>
           </div>
         </InfoWindow>
-        <Marker
-          onLoad={onLoad}
+        <MarkerF
+          onLoad={onMarkerLoad}
+          // icon={{path: google.maps.SymbolPath.CIRCLE,scale: 7,}}
           position={position}
         />
+        {MarkerData.map((marker, index) => (
+          <MarkerF
+            onLoad={onMarkerLoad}
+            position={marker.position}
+          />
+        ))}
       </GoogleMap>
       {/* search component  */}
       <Autocomplete
@@ -143,7 +146,6 @@ const Map = () => {
       >
         <input type="text" placeholder="Search for a location" />
       </Autocomplete>
-
     </div>
   );
 };

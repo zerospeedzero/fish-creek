@@ -24,12 +24,13 @@ export default function App({ Component, pageProps }) {
       <Script
         id='google-analytics'
         strategy="afterInteractive"
+        GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} 
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', GA_MEASUREMENT_ID , {
+            gtag('config', 'G-21QYR215HP' , {
               page_path: window.location.pathname,
             });
           `,
