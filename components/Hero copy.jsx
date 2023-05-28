@@ -26,8 +26,7 @@ const Head = ({heading, message}) => {
     <div id="hero" className='flex items-center justify-center h-screen mb-12 bg-fixed bg-center bg-cover custom-image'>
       {/* Overlay */}
       <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/20 z-[2]'/>
-      <Weather heading='Welcome to Fish Creek' message="Hiking in Calgary City"/>
-      {/*<div className='flex flex-col justify-center h-full p-5 text-white z-[2] '>
+      <div className='flex flex-col justify-center h-full p-5 text-white z-[2] '>
         {weather.main && 
           <div className='h-1/3 flex flex-col justify-center' >
             <div className='self-end flex justify-between'>
@@ -70,7 +69,8 @@ const Head = ({heading, message}) => {
           </div>
         } 
       </div>
-      */}
+        {/* Weather */}
+        {/*weather.main && <Weather data={weather} /> */}
     </div>
   )
 }

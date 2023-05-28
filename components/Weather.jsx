@@ -1,45 +1,70 @@
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import Spinner from '../components/Spinner';
 
-const Weather = ({ data }) => {
-  console.log(data);
+const Weather = ({heading, message}) => {
+  // const [city, setCity] = useState('');
+  const [weather, setWeather] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=fish%20creek&units=metric&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+  const fetchWeather = (e) => {
+    // setLoading(true);
+    axios.get(url).then((response) => {
+      setWeather(response.data);
+    });
+    // setCity('');
+    console.log(weather[0]);
+    // setLoading(false);
+  };
+  
   return (
-    <div className='relative flex flex-col justify-between max-w-[500px] w-full h-[90vh] m-auto p-4 text-gray-300 z-10'>
-      {/* Top */}
-      <div className='relative flex justify-between pt-12'>
-        <div className='flex flex-col items-center'>
-          <Image
-            src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-            alt='/'
-            width='100'
-            height='100'
-          />
-          <p className='text-2xl'>{data.weather[0].main}</p>
+    <div className='flex flex-col justify-center h-full p-5 text-white z-[2] '>
+      {weather.main && 
+        <div className='h-1/3 flex flex-col justify-center' >
+          <div className='self-end flex justify-between'>
+            <div className='flex flex-col items-center'>
+              <Image
+                src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                alt='/'
+                width='60'
+                height='60'
+              />
+              <p className='text-2xl'>{weather.weather[0].main}</p>
+            </div>
+            <p className='pt-3 text-5xl items-center'>{weather.main.temp.toFixed(0)}&#176;</p>
+          </div>
         </div>
-        <p className='text-9xl'>{data.main.temp.toFixed(0)}&#176;</p>
+      }
+      <div className="h-1/3">
+        <h2 className='text-5xl font-bold' >{heading}</h2>
+        <p className='py-5 text-xl'>{message}</p>
+        <button className='px-8 py-2 border' onClick={fetchWeather}>Weather</button>
+
       </div>
-      {/* Bottom */}
-
-<div className='relative p-8 rounded-md'>
-    <p className='text-2xl text-center pb-6'>Weather in {data.name}</p>
-    <div className='flex justify-between text-center'>
-        <div>
-            <p className='font-bold text-2xl'>{data.main.feels_like.toFixed(0)}&#176;</p>
-            <p className='text-xl'>Feels Like</p>
+      { weather.main &&
+        <div className='h-1/3 relative p-8 rounded-md'>
+          <p className='text-2xl text-center pb-6'>Weather in {weather.name}</p>
+          <div className='flex justify-between text-center'>
+            <div>
+              <p className='font-bold text-2xl'>{weather.main.feels_like.toFixed(0)}&#176;</p>
+              <p className='text-xl'>Feels Like</p>
+            </div>
+            <div>
+              <p className='font-bold text-2xl'>{weather.main.humidity}%</p>
+              <p className='text-xl'>Humidity</p>
+            </div>
+            <div>
+              <p className='font-bold text-2xl'>{weather.wind.speed.toFixed(0)} MPH</p>
+              <p className='text-xl'>Winds</p>
+            </div>
+          </div>
         </div>
-        <div>
-            <p className='font-bold text-2xl'>{data.main.humidity}%</p>
-            <p className='text-xl'>Humidity</p>
-        </div>
-        <div>
-            <p className='font-bold text-2xl'>{data.wind.speed.toFixed(0)} MPH</p>
-            <p className='text-xl'>Winds</p>
-        </div>
+      } 
     </div>
-</div>
+  )
+}
 
-    </div>
-  );
-};
-
-export default Weather;
+export default Weather

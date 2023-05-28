@@ -39,11 +39,11 @@ const WeatherForecast = () => {
   };
 
   return (
-    <div className="weather-forecast p-4">
+    <div className="weather-forecast p-2">
       {Object.entries(groupedForecast).map(([date, items]) => (
         <div key={date}  className="forecast-day mb-4">
           <h3 className="text-2xl font-semibold mb-2">{date} ({Date(date).toLocaleString('en-us', {weekday:'long'}).split(' ')[0]})</h3>
-          <div className="forecast-items flex flex-wrap gap-4">
+          <div className="forecast-items flex flex-wrap justify-evenly gap-4">
             {items.map((item) => (
               <div key={item.dt} className="forecast-item p-2 border border-gray-300 rounded">
                 <div className="time text-sm font-semibold">
