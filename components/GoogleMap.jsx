@@ -1,13 +1,92 @@
 import { useState, useRef } from "react";
-import { GoogleMap, useLoadScript, InfoWindow, onLoad, Marker, MarkerF, Autocomplete} from "@react-google-maps/api";
+import { GoogleMap, KmlLayer, useLoadScript, InfoWindow, onLoad, Marker, MarkerF, Autocomplete, Polyline} from "@react-google-maps/api";
 import {MarkerData} from './MarkerData.js';
+import {TrailData} from './TrailData.js';
+import {faCamera, faBus, faRestroom} from "@fortawesome/free-solid-svg-icons";
+import {Mapstyle} from './Mapstyle.js';
+
+const polyLineOptions = {
+  strokeColor: '#FF0000',
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: '#FF0000',
+  fillOpacity: 0.35,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  visible: true,
+  radius: 30000,
+  zIndex: 1
+};
+
+// Marker styles
+const faIcons = [
+  { path: faCamera.icon[4],
+    fillOpacity: 0.5,
+    strokeWeight: 0.5,
+    strokeColor: "#0000ff",
+    fillColor: "#0000ff",
+    scale: 0.05
+  },
+  { path: faBus.icon[4],
+    fillOpacity: 0.5,
+    strokeWeight: 0.5,
+    strokeColor: "#ff0000",
+    fillColor: "#ff0000",
+    scale: 0.05
+  },
+  { path: faRestroom.icon[4],
+    fillOpacity: 0.5,
+    strokeWeight: 0.5,
+    strokeColor: "#64B00",
+    fillColor: "#64B00",
+    scale: 0.05
+  },
+
+]
+
+const divStyle = {
+  background: `white`,
+  border: `1px solid #ccc`,
+  padding: 15,
+}
+
+// const options = {
+//   mapTypeControl: false,
+//   mapTypeId: 'terrain',
+//   styles: [{
+//     featureType: "poi.business",
+//     stylers: [{ visibility: "off" }],
+//   },
+//   {
+//     featureType: "transit",
+//     elementType: "labels.icon",
+//     stylers: [{ visibility: "off" }],
+//   },]
+// }
+
+const options = {
+  mapTypeControl: false,
+  mapTypeId: 'terrain',
+  styles: Mapstyle
+}
+
+const test = (arg) => {
+  console.log(arg);
+}
 
 const Map = () => {
+  const [map, setMap] = useState(null);
+  const [bounds, setBounds] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [searchLngLat, setSearchLngLat] = useState(null);
   const [currentLocation, setCurrentLocation] = useState(null);
   const autocompleteRef = useRef(null);
   const [address, setAddress] = useState("");
+  const [activeMarker, setActiveMarker] = useState(null);
+  // const [kmllayer, setKmllayer] = useState("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml");
+  const [kmllayer, setKmllayer] = useState(null);
+  //const [kmllayer, setKmllayer] = useState("http://127.0.0.1:3000/FishCreek.kml");
   // laod script for google map
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
@@ -20,17 +99,17 @@ const Map = () => {
   const center = { lat: 50.91484858712036, lng: -114.01179935974952 };
   const position = { lat: 50.91484858712036, lng: -114.01179935974952 };
 
-  const divStyle = {
-    background: `white`,
-    border: `1px solid #ccc`,
-    padding: 15,
-  }
-
   const onLoad = infoWindow => {
-    console.log('infoWindow: ', infoWindow)
+    // console.log('infoWindow: ', infoWindow)
   }
   const onMarkerLoad = marker => {
-    console.log('marker: ', marker)
+    // marker.setAnimation(google.maps.Animation.BOUNCE);
+    // console.log('marker: ', marker)
+    // setKmllayer("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml");
+
+  }
+  const onPolylineLoad = polyline => {
+    console.log('polyline:' , polyline);
   }
 
   // handle place change on search
@@ -53,6 +132,9 @@ const Map = () => {
           setSelectedPlace(null);
           setSearchLngLat(null);
           setCurrentLocation({ lat: latitude, lng: longitude });
+          // const bounds = new google.maps.LatLngBounds();
+          // MarkerData.forEach(({ position }) => bounds.extend(position));
+          // map.fitBounds(bounds);
         },
         (error) => {
           console.log(error);
@@ -63,8 +145,43 @@ const Map = () => {
     }
   };
 
+  const displayInfo = (e) => {
+    console.log(e);
+  }
+
+  const handleActiveMarker = (event, marker) => {
+    console.log(event);
+    if (marker == activeMarker) {
+      return;
+    }
+    setActiveMarker(null);
+    const infowindow = new google.maps.InfoWindow({
+      content: 
+        "<div style=''>" +
+          "<figure style=''>" +
+            "<h3 style='color:black; font-size: 1.5rem;'>" + MarkerData[marker].name + "</h3>" +
+            "<img style='width:100%' src='" + MarkerData[marker].picture + "' alt='testing'/>" +
+            "<figcaption style='color:black'>" + MarkerData[marker].description + "</figcaption>" +
+          "</figure>" +
+        "</div>", 
+      position:  MarkerData[marker].position,
+      ariaLabel: MarkerData[marker].name,
+    });
+    infowindow.open({
+      map,
+    });
+  };
+
+  const handleOnLoad = (map) => {
+    const bounds = new google.maps.LatLngBounds();
+    markers.forEach(({ position }) => bounds.extend(position));
+    map.fitBounds(bounds);
+  };
+
+
   // on map load
   const onMapLoad = (map) => {
+    setMap(map);
     const controlDiv = document.createElement("div");
     const controlUI = document.createElement("div");
     controlUI.innerHTML = "<p>Locate</p><p>Me</p>";
@@ -74,12 +191,29 @@ const Map = () => {
     controlUI.style.borderRadius = "50%";
     controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
     controlUI.style.cursor = "pointer";
-    controlUI.style.marginBottom = "22px";
+    controlUI.style.marginTop = "20px";
     controlUI.style.textAlign = "center";
     controlUI.style.width = "100%";
-    controlUI.style.padding = "20px 16px";
+    controlUI.style.padding = "14px 10px";
     controlUI.addEventListener("click", handleGetLocationClick);
     controlDiv.appendChild(controlUI);
+
+    const buttonDiv = document.createElement("div");
+    const buttonUI = document.createElement("div");
+    buttonUI.innerHTML = "Trail 1";
+    buttonUI.style.backgroundColor = "white";
+    buttonUI.style.color = "black";
+    buttonUI.style.border = "2px solid #ccc";
+    buttonUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+    buttonUI.style.cursor = "pointer";
+    buttonUI.style.marginBottom = "20px";
+    buttonUI.style.textAlign = "center";
+    buttonUI.style.width = "100%";
+    buttonUI.style.padding = "4px 14px";
+    buttonUI.addEventListener("click", () => {setKmllayer("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml")}); 
+    buttonDiv.appendChild(buttonUI); 
+
+
 
     // const centerControl = new window.google.maps.ControlPosition(
     //   window.google.maps.ControlPosition.TOP_CENTER,
@@ -90,7 +224,21 @@ const Map = () => {
     map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(
       controlDiv
     );
+    map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(
+      buttonDiv
+    );   
   };
+  const onUnmount = () => {
+    setMap(null);
+  };
+
+  const currentLocationLoad = () => {
+    const bounds = new google.maps.LatLngBounds();
+    MarkerData.forEach(({ position }) => bounds.extend(position));
+    bounds.extend(currentLocation);
+    console.log(position);
+    map.fitBounds(bounds);
+  }
 
   return (
     <div
@@ -104,48 +252,34 @@ const Map = () => {
         // gap: "20px",
       }}
     >
-
       {/* map component  */}
       <GoogleMap
+        options={options}
         zoom={currentLocation || selectedPlace ? 18 : 12}
         center={currentLocation || searchLngLat || center}
         mapContainerClassName="map"
-        mapContainerStyle={{ width: "100%", height: "600px", margin: "auto" }}
+        mapContainerStyle={{ width: "100%", height: "calc(100vh - 150px)", margin: "auto" }}
         onLoad={onMapLoad}
+        onUnmount={onUnmount}
+        onClick={() => setActiveMarker(null)}
       >
         {selectedPlace && <Marker position={searchLngLat} />}
-        {currentLocation && <Marker position={currentLocation} />}
-        <InfoWindow
-          onLoad={onLoad}
-          position={position}
-        >
-          <div style={divStyle}>
-            <h1>InfoWindow</h1>
-          </div>
-        </InfoWindow>
-        <MarkerF
-          onLoad={onMarkerLoad}
-          // icon={{path: google.maps.SymbolPath.CIRCLE,scale: 7,}}
-          position={position}
-        />
+        {currentLocation && <Marker position={currentLocation} onLoad={currentLocationLoad} animation={1}/>}
         {MarkerData.map((marker, index) => (
           <MarkerF
+            key={index}
             onLoad={onMarkerLoad}
             position={marker.position}
-          />
+            icon={faIcons[marker.iconid]}
+            animation={2}
+            onClick={() => {handleActiveMarker(event, index); test(this)}}
+          >
+          </MarkerF>
         ))}
+        { kmllayer && 
+          <KmlLayer url={kmllayer}/>
+        }
       </GoogleMap>
-      {/* search component  */}
-      <Autocomplete
-        onLoad={(autocomplete) => {
-          console.log("Autocomplete loaded:", autocomplete);
-          autocompleteRef.current = autocomplete;
-        }}
-        onPlaceChanged={handlePlaceChanged}
-        options={{ fields: ["address_components", "geometry", "name"] }}
-      >
-        <input type="text" placeholder="Search for a location" />
-      </Autocomplete>
     </div>
   );
 };

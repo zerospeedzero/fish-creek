@@ -10,7 +10,7 @@ const trails = () => {
         <meta name='description' content="Fish Creek national park" />
         <link rel='icon' href='/favicon.ico'/>
       </Head>
-      <Test trails='Fish Creek' message="Hiking in Calgary City"/>
+      <Test apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}/>
     </>
   )
 }

@@ -12,8 +12,11 @@ export default function Home() {
         <meta name='description' content="Fish Creek national park" />
         <link rel='icon' href='/favicon.ico'/>
       </Head>
-      <Hero heading='Welcome to Fish Creek' message="Hiking in Calgary City"/>
-      <Forecast/>
+      <div className='flex items-center justify-center bg-fixed bg-center bg-cover custom-image'>
+        {/* Overlay */}
+        <div className='fixed top-0 left-0 right-0 bottom-0 bg-black/60 z-[2]'/>        
+        <Forecast className=''/>
+      </div>
     </>
   )
 }

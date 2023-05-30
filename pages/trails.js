@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'] })
-import Trails from '../components/Trails'
+const inter = Inter({ subsets: ['latin'] });
+import Trails from '../components/Trails';
+import Footer from '../components/Footer';
 const trails = () => {
   return (
     <>
@@ -11,6 +12,7 @@ const trails = () => {
         <link rel='icon' href='/favicon.ico'/>
       </Head>
       <Trails trails='Fish Creek' message="Hiking in Calgary City"/>
+      <Footer/>
     </>
   )
 }

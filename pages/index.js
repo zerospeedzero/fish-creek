@@ -4,6 +4,7 @@ import { SliderData} from '../components/SliderData';
 import Slider from '../components/Slider';
 import { Inter } from 'next/font/google';
 import Instagram from '../components/instagram';
+import Footer from '../components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Slider slides={SliderData}/>
       {/* <Trails/> */}
       <Instagram/>
+      <Footer/>
     </>
   )
 }
