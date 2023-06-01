@@ -2,6 +2,8 @@ import Image from 'next/image';
 import React, {useEffect, useState} from 'react'
 import { SliderData } from './SliderData';
 import {FaArrowCircleLeft , FaArrowCircleRight}  from 'react-icons/fa';
+import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon } from 'next-share';
+
 
 const Slider = ({slides}) => {
   const [current, setCurrent ] =useState(0);
@@ -32,23 +34,52 @@ const Slider = ({slides}) => {
               {/* <div className='relative flex justify-center p-4'> */}
                 <FaArrowCircleLeft
                   onClick={prevSlide}
-                  className='absolute top-[50%] left-[30px] text-white/70 cursor-pointer select-non z-[2]' 
+                  className='absolute top-[45%] left-[30px] text-white/70 cursor-pointer select-non z-[2]' 
                   size={50} 
                 />
                 {index === current && (
-                  <Image 
-                    src={slide.image} 
-                    alt='/' 
-                    width='1440' 
-                    height='600' 
-                    objectFit='cover'
-                  />
+                  <div>
+                    <Image 
+                      src={(process.env.NODE_ENV == 'development') ? slide.image : `${process.env.imagePrefix}` + slide.image} 
+                      alt='dummy' 
+                      width='1440' 
+                      height='600' 
+                      objectFit='cover'
+                    />
+                    <figcaption>{slide.description}</figcaption>
+                  </div>
                 )}
                 <FaArrowCircleRight 
                   onClick={nextSlide}
-                  className='absolute top-[50%] right-[30px] text-white/70 cursor-pointer select-non z-[2]' 
+                  className='absolute top-[45%] right-[30px] text-white/70 cursor-pointer select-non z-[2]' 
                   size={50}
                 />
+                <div className='absolute bottom-[20%] left-[0] text-white/70 cursor-pointer select-non z-[2] w-[100%] flex justify-center'>
+                  <FacebookShareButton
+                    url={'https://fish-creek.azurewebsites.net'}
+                    quote={'next-share is a social share buttons for your next React apps.'}
+                    hashtag={'#nextshare'}
+                  >
+                    <FacebookIcon size={42} round className='m-2 opacity-70 hover:opacity-100'/>
+                  </FacebookShareButton>
+                  <TwitterShareButton
+                    url={'https://fish-creek.azurewebsites.net'}
+                    title={'next-share is a social share buttons for your next React apps.'}
+                  >
+                    <TwitterIcon size={42} round className='m-2 opacity-70 hover:opacity-100' />
+                  </TwitterShareButton>
+
+                  <WhatsappShareButton
+                    url={'https://fish-creek.azurewebsites.net'}
+                    title={'next-share is a social share buttons for your next React apps.'}
+                    separator=":: "
+                  >
+                    <WhatsappIcon size={42} round className='m-2 opacity-70 hover:opacity-100'/>
+                  </WhatsappShareButton>
+                  <LinkedinShareButton url={'https://fish-creek.azurewebsites.net'}>
+                    <LinkedinIcon size={42} round className='m-2 opacity-70 hover:opacity-100'/>
+                  </LinkedinShareButton>
+                </div>
               </div>
           );
         })}

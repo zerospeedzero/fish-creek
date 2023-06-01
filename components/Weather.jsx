@@ -22,7 +22,7 @@ const Weather = ({heading, message}) => {
       setMenu('Forecast')
     } else {
       setMenu('Weather')
-      router.push('/forecast')   
+      router.push('./forecast')   
     }
     // setCity('');
     // setLoading(false);
@@ -51,7 +51,7 @@ const Weather = ({heading, message}) => {
         <p className='py-5 text-xl'>{message}</p>
         <button className='px-8 py-2 border' onClick={fetchWeather}>{menu}</button>
         { (menu=="Weather") &&
-          <p className="hidden sm:block text-justify w-[500px] mt-24 p-2 text-sm italic bg-black/30">Welcome to the Fishcreek hiking trail interactive map. If you have a love for the outdoors and are seeking an escape from the everyday busyness of the city, you've come to the right place! Fish Creek provides a remarkable landscape with many trails to choose from. Your visit to Fishcreek is guaranteed to be unique as the trails wind through beautiful forests, offering great views of the landscape and wildlife. Whether you're an expert hiker or a beginner looking to start their hiking journey, Fish Creek has something for everyone. This provincial park is right in the heart of Calgary and not only offers serene, but also exhilarating trails depending on your skill level. Join us as we explore the vast and picturesque trails of Fishcreek!</p>
+          <p className="hidden sm:block text-justify w-[500px] mt-24 p-2 text-sm italic bg-black/30">Welcome to the Fishcreek hiking trail interactive map. If you have a love for the outdoors and are seeking an escape from the everyday busyness of the city, you have come to the right place! Fish Creek provides a remarkable landscape with many trails to choose from. Your visit to Fishcreek is guaranteed to be unique as the trails wind through beautiful forests, offering great views of the landscape and wildlife. Whether you are an expert hiker or a beginner looking to start their hiking journey, Fish Creek has something for everyone. This provincial park is right in the heart of Calgary and not only offers serene, but also exhilarating trails depending on your skill level. Join us as we explore the vast and picturesque trails of Fishcreek!</p>
         }
       </div>
       {weather.main && (menu=="Forecast") && 

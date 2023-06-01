@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const WeatherForecast = () => {
   const [forecast, setForecast] = useState([]);
@@ -46,7 +47,7 @@ const WeatherForecast = () => {
           <h3 className="text-2xl font-semibold mb-2">{date}</h3>
           <div className="forecast-items flex flex-wrap justify-start gap-2">
             {items.map((item) => (
-              <div key={item.dt} className="forecast-item p-2 bg-white/80 text-black border border-gray-300 rounded">
+              <div key={item.dt} className="forecast-item p-2 bg-white/80 text-black border border-gray-300 rounded hover:animate-bounce">
                 <div className="time text-sm font-semibold">
                   {new Date(item.dt_txt).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' })}
                 </div>
@@ -54,7 +55,7 @@ const WeatherForecast = () => {
                   {Math.round(item.main.temp)}°C
                 </div>
                 <div className="weather-icon">
-                  <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt="Weather Icon" />
+                  <Image src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt="Weather Icon" />
                 </div>
               </div>
             ))}

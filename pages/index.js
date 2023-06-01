@@ -2,10 +2,16 @@ import Head from 'next/head';
 import Hero from '../components/Hero';
 import { SliderData} from '../components/SliderData';
 import Slider from '../components/Slider';
-import { Inter } from 'next/font/google';
+// import { Inter } from 'next/font/google';
 import Instagram from '../components/instagram';
-import Footer from '../components/Footer'
-const inter = Inter({ subsets: ['latin'] })
+import Footer from '../components/Footer';
+
+// const inter = Inter({ subsets: ['latin'] })
+
+export const getStaticProps = async () => {
+  return { props: {} };
+};
+
 
 export default function Home() {
   return (

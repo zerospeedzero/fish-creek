@@ -8,7 +8,7 @@ html {
 }
 
 .custom-image {
-  background-image: url('/background.jpg');
+  background-image: url('../public/background.jpg');
 }
 
 :root {

@@ -1,8 +1,13 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'] });
+// import { Inter } from 'next/font/google';
+// const inter = Inter({ subsets: ['latin'] });
 import Trails from '../components/Trails';
 import Footer from '../components/Footer';
+
+export const getStaticProps = async () => {
+  return { props: {} };
+};
+
 const trails = () => {
   return (
     <>

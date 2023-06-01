@@ -41,6 +41,7 @@ export default function Home() {
           src='https://images.unsplash.com/photo-1601134467661-3d775b999c8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2575&q=80'
           layout='fill'
           className='object-cover'
+          alt="dump"
         />
 
         {/* Search */}

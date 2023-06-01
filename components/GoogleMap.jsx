@@ -84,10 +84,8 @@ const Map = () => {
   const autocompleteRef = useRef(null);
   const [address, setAddress] = useState("");
   const [activeMarker, setActiveMarker] = useState(null);
-  // const [kmllayer, setKmllayer] = useState("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml");
   const [kmllayer, setKmllayer] = useState(null);
-  //const [kmllayer, setKmllayer] = useState("http://127.0.0.1:3000/FishCreek.kml");
-  // laod script for google map
+  const [locating, setLocating] = useState(null);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
     libraries: ["places"],
@@ -96,13 +94,17 @@ const Map = () => {
   if (!isLoaded) return <div>Loading....</div>;
 
   // static lat and lng
-  const center = { lat: 50.91484858712036, lng: -114.01179935974952 };
-  const position = { lat: 50.91484858712036, lng: -114.01179935974952 };
+  // const center = { lat: 50.91484858712036, lng: -114.01179935974952 };
+  // const position = { lat: 50.91484858712036, lng: -114.01179935974952 };
+  const center = { lat: 50.91175406407451, lng: -114.01832417241165 };
+  const position = { lat: 50.91175406407451, lng: -114.01832417241165};
+
 
   const onLoad = infoWindow => {
     // console.log('infoWindow: ', infoWindow)
   }
   const onMarkerLoad = marker => {
+    // return new Promise(resolve => setTimeout(resolve, 1000));
     // marker.setAnimation(google.maps.Animation.BOUNCE);
     // console.log('marker: ', marker)
     // setKmllayer("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml");
@@ -125,6 +127,8 @@ const Map = () => {
 
   // get current location
   const handleGetLocationClick = () => {
+    setLocating('1');
+    console.log(locating)
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -132,9 +136,6 @@ const Map = () => {
           setSelectedPlace(null);
           setSearchLngLat(null);
           setCurrentLocation({ lat: latitude, lng: longitude });
-          // const bounds = new google.maps.LatLngBounds();
-          // MarkerData.forEach(({ position }) => bounds.extend(position));
-          // map.fitBounds(bounds);
         },
         (error) => {
           console.log(error);
@@ -143,6 +144,8 @@ const Map = () => {
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
+    setLocating(null);
+    console.log(locating)
   };
 
   const displayInfo = (e) => {
@@ -236,7 +239,6 @@ const Map = () => {
     const bounds = new google.maps.LatLngBounds();
     MarkerData.forEach(({ position }) => bounds.extend(position));
     bounds.extend(currentLocation);
-    console.log(position);
     map.fitBounds(bounds);
   }
 
@@ -251,11 +253,17 @@ const Map = () => {
         // alignItems: "center",
         // gap: "20px",
       }}
-    >
+    > 
+      {locating && (
+        <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[2] flex justify-center items-center' >
+          <svg className="bg-white animate-spin h-5 w-5 mr-3" viewBox="0 0 36 36">
+          </svg>
+        </div>
+      )}
       {/* map component  */}
       <GoogleMap
         options={options}
-        zoom={currentLocation || selectedPlace ? 18 : 12}
+        zoom={currentLocation || selectedPlace ? 18 : 13}
         center={currentLocation || searchLngLat || center}
         mapContainerClassName="map"
         mapContainerStyle={{ width: "100%", height: "calc(100vh - 150px)", margin: "auto" }}

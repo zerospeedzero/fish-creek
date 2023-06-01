@@ -24,21 +24,21 @@ const Navbar = () => {
   return (
     <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-300'>
       <div className='max-w-[1240px] m-auto flex justify-between items-center p-4 text-white'>
-        <Link href='/'>
+        <Link href='./'>
           <h1 style={{color: `${textColor}`}} className='font-bold text-4xl'>City Hiker</h1>
         </Link>
         <ul style={{color: `${textColor}`}} className='hidden sm:flex'>
           <li className='p-4'>
-            <Link href='/#hero' scroll={false}>Home</Link>
+            <Link href='./#hero' scroll={false}>Home</Link>
           </li>
           <li className='p-4'>
-            <Link href='/#gallery' scroll={false}>Gallery</Link>
+            <Link href='./#gallery' scroll={false}>Gallery</Link>
           </li>
           <li className='p-4'>
-            <Link href='/trails' scroll={false}>Trails</Link>
+            <Link href='./trails' scroll={false}>Trails</Link>
           </li>
           <li className='p-4'>
-            <Link href='/#contact' scroll={false}>Contact</Link>
+            <Link href='./#contact' scroll={false}>Contact</Link>
           </li>
         </ul>
         {/* Mobile Button */}
@@ -51,16 +51,16 @@ const Navbar = () => {
         : 'sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300'}> 
           <ul>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/' onClick={handleNav}>Home</Link>
+              <Link href='./' onClick={handleNav}>Home</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/#gallery' scroll={false} onClick={handleNav}>Gallery</Link>
+              <Link href='./#gallery' scroll={false} onClick={handleNav}>Gallery</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/trails' scroll={false} onClick={handleNav} >Trails</Link>
+              <Link href='./trails' scroll={false} onClick={handleNav} >Trails</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/#contact' scroll={false} onClick={handleNav}>Contact</Link>
+              <Link href='./#contact' scroll={false} onClick={handleNav}>Contact</Link>
             </li>
           </ul>
         </div>

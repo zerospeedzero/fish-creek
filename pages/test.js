@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'] })
+// import { Inter } from 'next/font/google';
+// const inter = Inter({ subsets: ['latin'] })
 import Test from '../components/Test'
 const trails = () => {
   return (
