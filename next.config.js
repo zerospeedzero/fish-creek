@@ -5,10 +5,10 @@ const nextConfig = {
   // assetPrefix: "/out",
   // basePath: '/~gcheng/fish_creek',
   // assetPrefix: '/~gcheng/fish_creek',
-  env: {
+  // env: {
     // imagePrefix: "/~gcheng/fish_creek",
     // imagePrefix: "/out",
-  }, 
+  // }, 
   reactStrictMode: true,
   images: {
     unoptimized: true,

@@ -13,6 +13,7 @@ const Weather = ({heading, message}) => {
   const [menu, setMenu] = useState('Weather');
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=fish%20creek&units=metric&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+  console.log('weather url: ' + url)
   const fetchWeather = (e) => {
     // setLoading(true);
     if (menu == "Weather") {

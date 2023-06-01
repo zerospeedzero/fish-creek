@@ -17,9 +17,9 @@ const Slider = ({slides}) => {
   if (!Array.isArray(slides) || slides.length <=0 ) {
     return null;
   }
-  // useEffect(() => {
-  //   setInterval(() => {nextSlide()}, 5000);
-  // });
+  useEffect(() => {
+    setInterval(() => {nextSlide()}, 5000);
+  });
   // setInterval(() => {nextSlide}, 1000);
   // useEffect(() => {
   //   setInterval(() => {nextSlide}, 1000);

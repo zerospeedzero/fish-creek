@@ -55,7 +55,7 @@ const WeatherForecast = () => {
                   {Math.round(item.main.temp)}°C
                 </div>
                 <div className="weather-icon">
-                  <Image src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt="Weather Icon" />
+                  <Image width={100} height={50} src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt="Weather Icon" />
                 </div>
               </div>
             ))}
