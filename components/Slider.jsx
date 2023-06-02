@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React, {useEffect, useState} from 'react'
 import { SliderData } from './SliderData';
-import {FaArrowCircleLeft , FaArrowCircleRight}  from 'react-icons/fa';
 import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon } from 'next-share';
-
+import Carousel from 'better-react-carousel';
+import SocialMedia from './SocialMedia';
 
 const Slider = ({slides}) => {
   const [current, setCurrent ] =useState(0);
@@ -17,73 +17,40 @@ const Slider = ({slides}) => {
   if (!Array.isArray(slides) || slides.length <=0 ) {
     return null;
   }
-  useEffect(() => {
-    setTimeout(() => {nextSlide()}, 5000);
-  });
+  const responsiveLayout = [
+    { breakpoint: 9999, cols: 3, rows: 1, gap: 10, loop: true, autoplay: 10000 },
+    { breakpoint: 1024, cols: 2, rows: 1, gap: 10, loop: true, autoplay: 10000 },
+    // { breakpoint: 768,  cols: 1, rows: 1, gap: 10, loop: true, autoplay: 5000 }
+
+  ]
   // setInterval(() => {nextSlide}, 1000);
   // useEffect(() => {
   //   setInterval(() => {nextSlide}, 1000);
   // }, [])
   return (
-    <div id='gallery' className='max-w-[900px] mx-auto pt-[90px]'>
+    <div id='gallery' className='mx-auto pt-[90px]'>
       <h1 className='text-2xl font-bold text-black text-center p-4'>Gallery of Fish Creek</h1>
-        <div className='relative flex justify-center p-4'>
+        {/* <div className='relative flex justify-center p-4'> */}
+        <Carousel gap={10} scrollSnap loop showDots responsiveLayout={responsiveLayout}>
         {SliderData.map((slide, index) => {
-          return  ( 
-            <div key={index} className={index === current ? 'opacity-[1] ease-in duration-1000' : 'opacity-0'}>
-              {/* <div className='relative flex justify-center p-4'> */}
-                <FaArrowCircleLeft
-                  onClick={prevSlide}
-                  className='absolute top-[45%] left-[30px] text-white/70 cursor-pointer select-non z-[2]' 
-                  size={50} 
-                />
-                {index === current && (
-                  <div>
-                    <Image 
-                      src={(process.env.NODE_ENV == 'development') ? slide.image : `${process.env.imagePrefix}` + slide.image} 
-                      alt='dummy' 
-                      width='1440' 
-                      height='600' 
-                      objectFit='cover'
-                    />
-                    <figcaption>{slide.description}</figcaption>
-                  </div>
-                )}
-                <FaArrowCircleRight 
-                  onClick={nextSlide}
-                  className='absolute top-[45%] right-[30px] text-white/70 cursor-pointer select-non z-[2]' 
-                  size={50}
-                />
-                <div className='absolute bottom-[20%] left-[0] text-white/70 cursor-pointer select-non z-[2] w-[100%] flex justify-center'>
-                  <FacebookShareButton
-                    url={'https://fish-creek.azurewebsites.net'}
-                    quote={'next-share is a social share buttons for your next React apps.'}
-                    hashtag={'#nextshare'}
-                  >
-                    <FacebookIcon size={42} round className='m-2 opacity-70 hover:opacity-100'/>
-                  </FacebookShareButton>
-                  <TwitterShareButton
-                    url={'https://fish-creek.azurewebsites.net'}
-                    title={'next-share is a social share buttons for your next React apps.'}
-                  >
-                    <TwitterIcon size={42} round className='m-2 opacity-70 hover:opacity-100' />
-                  </TwitterShareButton>
-
-                  <WhatsappShareButton
-                    url={'https://fish-creek.azurewebsites.net'}
-                    title={'next-share is a social share buttons for your next React apps.'}
-                    separator=":: "
-                  >
-                    <WhatsappIcon size={42} round className='m-2 opacity-70 hover:opacity-100'/>
-                  </WhatsappShareButton>
-                  <LinkedinShareButton url={'https://fish-creek.azurewebsites.net'}>
-                    <LinkedinIcon size={42} round className='m-2 opacity-70 hover:opacity-100'/>
-                  </LinkedinShareButton>
-                </div>
+          return (
+            <Carousel.Item key={index}>
+              <Image 
+                src={(process.env.NODE_ENV == 'development') ? slide.image : `${process.env.imagePrefix}` + slide.image} 
+                alt='dummy' 
+                width='1440' 
+                height='600' 
+                objectFit='cover'
+                onClick={(e) => {console.log('abc1')}}
+              />
+              <div className="-mt-7">
+                <SocialMedia/>
               </div>
-          );
+            </Carousel.Item>
+          )
         })}
-      </div>
+        </Carousel>
+      {/* </div> */}
     </div>
   )
 }
