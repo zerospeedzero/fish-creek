@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
-import { GoogleMap, KmlLayer, useLoadScript, InfoWindow, onLoad, Marker, MarkerF, Autocomplete, Polyline} from "@react-google-maps/api";
+import { GoogleMap, KmlLayer, useLoadScript, InfoWindow, onLoad, Marker, MarkerF, InfoWindowF, Autocomplete, Polyline} from "@react-google-maps/api";
 import {MarkerData} from './MarkerData.js';
 import {TrailData} from './TrailData.js';
 import {faCamera, faBus, faRestroom} from "@fortawesome/free-solid-svg-icons";
 import {Mapstyle} from './Mapstyle.js';
+import Image from 'next/image';
 
 const polyLineOptions = {
   strokeColor: '#FF0000',
@@ -157,22 +158,22 @@ const Map = () => {
     if (marker == activeMarker) {
       return;
     }
-    setActiveMarker(null);
-    const infowindow = new google.maps.InfoWindow({
-      content: 
-        "<div style=''>" +
-          "<figure style=''>" +
-            "<h3 style='color:black; font-size: 1.5rem;'>" + MarkerData[marker].name + "</h3>" +
-            "<img style='width:100%' src='" + MarkerData[marker].picture + "' alt='testing'/>" +
-            "<figcaption style='color:black'>" + MarkerData[marker].description + "</figcaption>" +
-          "</figure>" +
-        "</div>", 
-      position:  MarkerData[marker].position,
-      ariaLabel: MarkerData[marker].name,
-    });
-    infowindow.open({
-      map,
-    });
+    // setActiveMarker(null);
+    // const infowindow = new google.maps.InfoWindow({
+    //   content: 
+    //     "<div style=''>" +
+    //       "<figure style=''>" +
+    //         "<h3 style='color:black; font-size: 1.5rem;'>" + MarkerData[marker].name + "</h3>" +
+    //         "<img style='width:100%' src='" + MarkerData[marker].picture + "' alt='testing'/>" +
+    //         "<figcaption style='color:black'>" + MarkerData[marker].description + "</figcaption>" +
+    //       "</figure>" +
+    //     "</div>", 
+    //   position:  MarkerData[marker].position,
+    //   ariaLabel: MarkerData[marker].name,
+    // });
+    // infowindow.open({
+    //   map,
+    // });
   };
 
   const handleOnLoad = (map) => {
@@ -229,7 +230,7 @@ const Map = () => {
     );
     map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(
       buttonDiv
-    );   
+    );
   };
   const onUnmount = () => {
     setMap(null);
@@ -240,6 +241,8 @@ const Map = () => {
     MarkerData.forEach(({ position }) => bounds.extend(position));
     bounds.extend(currentLocation);
     map.fitBounds(bounds);
+    // console.log('currentlocationload is called');
+    // console.log(MarkerData);
   }
 
   return (
@@ -272,16 +275,27 @@ const Map = () => {
         onClick={() => setActiveMarker(null)}
       >
         {selectedPlace && <Marker position={searchLngLat} />}
-        {currentLocation && <Marker position={currentLocation} onLoad={currentLocationLoad} animation={1}/>}
+        {currentLocation && <MarkerF position={currentLocation} onLoad={currentLocationLoad} animation={1}/>}
         {MarkerData.map((marker, index) => (
           <MarkerF
             key={index}
             onLoad={onMarkerLoad}
             position={marker.position}
             icon={faIcons[marker.iconid]}
-            animation={2}
-            onClick={() => {handleActiveMarker(event, index); test(this)}}
+            animation={index == activeMarker ? 1 : 2}
+            onClick={() => {setActiveMarker(index);return; handleActiveMarker(event, index); test(this)}}
           >
+            {index == activeMarker && 
+              <InfoWindowF>
+                <div className=''>
+                  <h3 className='text-black text-lg'>{marker.name}</h3>
+                  <figure>
+                    <img width='300' src={marker.picture} alt='testing'/>
+                    <figcaption className="text-black">{marker.description}</figcaption>
+                  </figure>
+                </div>
+              </InfoWindowF>
+            }
           </MarkerF>
         ))}
         { kmllayer && 

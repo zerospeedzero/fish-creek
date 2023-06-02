@@ -18,7 +18,7 @@ const Slider = ({slides}) => {
     return null;
   }
   useEffect(() => {
-    setInterval(() => {nextSlide()}, 5000);
+    setTimeout(() => {nextSlide()}, 5000);
   });
   // setInterval(() => {nextSlide}, 1000);
   // useEffect(() => {
