@@ -52,20 +52,6 @@ const divStyle = {
   padding: 15,
 }
 
-// const options = {
-//   mapTypeControl: false,
-//   mapTypeId: 'terrain',
-//   styles: [{
-//     featureType: "poi.business",
-//     stylers: [{ visibility: "off" }],
-//   },
-//   {
-//     featureType: "transit",
-//     elementType: "labels.icon",
-//     stylers: [{ visibility: "off" }],
-//   },]
-// }
-
 const options = {
   mapTypeControl: false,
   mapTypeId: 'terrain',
@@ -94,9 +80,6 @@ const Map = () => {
 
   if (!isLoaded) return <div>Loading....</div>;
 
-  // static lat and lng
-  // const center = { lat: 50.91484858712036, lng: -114.01179935974952 };
-  // const position = { lat: 50.91484858712036, lng: -114.01179935974952 };
   const center = { lat: 50.91175406407451, lng: -114.01832417241165 };
   const position = { lat: 50.91175406407451, lng: -114.01832417241165};
 
@@ -105,14 +88,14 @@ const Map = () => {
     // console.log('infoWindow: ', infoWindow)
   }
   const onMarkerLoad = marker => {
-    // return new Promise(resolve => setTimeout(resolve, 1000));
-    // marker.setAnimation(google.maps.Animation.BOUNCE);
-    // console.log('marker: ', marker)
-    // setKmllayer("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml");
 
   }
   const onPolylineLoad = polyline => {
     console.log('polyline:' , polyline);
+  }
+
+  const markerAnimation = (index) => {
+    return index == activeMarker ? 1 : 2
   }
 
   // handle place change on search
@@ -158,22 +141,6 @@ const Map = () => {
     if (marker == activeMarker) {
       return;
     }
-    // setActiveMarker(null);
-    // const infowindow = new google.maps.InfoWindow({
-    //   content: 
-    //     "<div style=''>" +
-    //       "<figure style=''>" +
-    //         "<h3 style='color:black; font-size: 1.5rem;'>" + MarkerData[marker].name + "</h3>" +
-    //         "<img style='width:100%' src='" + MarkerData[marker].picture + "' alt='testing'/>" +
-    //         "<figcaption style='color:black'>" + MarkerData[marker].description + "</figcaption>" +
-    //       "</figure>" +
-    //     "</div>", 
-    //   position:  MarkerData[marker].position,
-    //   ariaLabel: MarkerData[marker].name,
-    // });
-    // infowindow.open({
-    //   map,
-    // });
   };
 
   const handleOnLoad = (map) => {
@@ -187,7 +154,7 @@ const Map = () => {
   const onMapLoad = (map) => {
     setMap(map);
     const controlDiv = document.createElement("div");
-    const controlUI = document.createElement("div");
+    const controlUI = document.createElement("button");
     controlUI.innerHTML = "<p>Locate</p><p>Me</p>";
     controlUI.style.backgroundColor = "white";
     controlUI.style.color = "black";
@@ -246,24 +213,13 @@ const Map = () => {
   }
 
   return (
-    <div
-      style={{
-        display: 'block',
-        width: '100%'
-        // display: "flex",
-        // flexDirection: "column",
-        // justifyContent: "center",
-        // alignItems: "center",
-        // gap: "20px",
-      }}
-    > 
+    <div className='w-full'>
       {locating && (
         <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[2] flex justify-center items-center' >
           <svg className="bg-white animate-spin h-5 w-5 mr-3" viewBox="0 0 36 36">
           </svg>
         </div>
       )}
-      {/* map component  */}
       <GoogleMap
         options={options}
         zoom={currentLocation || selectedPlace ? 18 : 13}
@@ -282,7 +238,7 @@ const Map = () => {
             onLoad={onMarkerLoad}
             position={marker.position}
             icon={faIcons[marker.iconid]}
-            animation={index == activeMarker ? 1 : 2}
+            animation={markerAnimation(index)}
             onClick={() => {setActiveMarker(index);return; handleActiveMarker(event, index); test(this)}}
           >
             {index == activeMarker && 
@@ -297,7 +253,8 @@ const Map = () => {
               </InfoWindowF>
             }
           </MarkerF>
-        ))}
+        ))
+        }
         { kmllayer && 
           <KmlLayer url={kmllayer}/>
         }

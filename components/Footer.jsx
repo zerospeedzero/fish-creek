@@ -18,8 +18,9 @@ const Footer = () => {
           </p>
           <h3 className="pt-4">Technology reference</h3>
           <p className="text-sm"><a href="https://nextjs.org/">Next JS framework</a></p>
-          
         </div>
+        <p><a href='./policy#privacy'>Privacy Policy</a></p>
+        <p><a href='./policy#term'>Terms of Service</a></p>
       </div>
     </footer>
   );

@@ -30,7 +30,6 @@ const Slider = ({slides}) => {
   return (
     <div id='gallery' className='mx-auto pt-[90px]'>
       <h1 className='text-2xl font-bold text-black text-center p-4'>Gallery of Fish Creek</h1>
-        {/* <div className='relative flex justify-center p-4'> */}
         <Carousel gap={10} scrollSnap loop showDots responsiveLayout={responsiveLayout}>
         {SliderData.map((slide, index) => {
           return (
