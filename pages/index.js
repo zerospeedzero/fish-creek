@@ -3,7 +3,7 @@ import Hero from '../components/Hero';
 import { SliderData} from '../components/SliderData';
 import Slider from '../components/Slider';
 // import { Inter } from 'next/font/google';
-import {Instagram} from '../components/instagram';
+import Instagram from '../components/Instagram';
 import Footer from '../components/Footer';
 
 // const inter = Inter({ subsets: ['latin'] })
