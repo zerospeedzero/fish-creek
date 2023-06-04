@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { GoogleMap, KmlLayer, useLoadScript, InfoWindow, onLoad, Marker, MarkerF, InfoWindowF, Autocomplete, Polyline} from "@react-google-maps/api";
 import {MarkerData} from './MarkerData.js';
 import {TrailData} from './TrailData.js';
-import {faCamera, faBus, faRestroom} from "@fortawesome/free-solid-svg-icons";
+// import {faCamera, faBus, faRestroom} from "@fortawesome/free-solid-svg-icons";
 import {Mapstyle} from './Mapstyle.js';
 import Image from 'next/image';
 
@@ -21,30 +21,29 @@ const polyLineOptions = {
 };
 
 // Marker styles
-const faIcons = [
-  { path: faCamera.icon[4],
-    fillOpacity: 0.5,
-    strokeWeight: 0.5,
-    strokeColor: "#0000ff",
-    fillColor: "#0000ff",
-    scale: 0.05
-  },
-  { path: faBus.icon[4],
-    fillOpacity: 0.5,
-    strokeWeight: 0.5,
-    strokeColor: "#ff0000",
-    fillColor: "#ff0000",
-    scale: 0.05
-  },
-  { path: faRestroom.icon[4],
-    fillOpacity: 0.5,
-    strokeWeight: 0.5,
-    strokeColor: "#64B00",
-    fillColor: "#64B00",
-    scale: 0.05
-  },
-
-]
+// const faIcons = [
+//   { path: faCamera.icon[4],
+//     fillOpacity: 0.5,
+//     strokeWeight: 0.5,
+//     strokeColor: "#0000ff",
+//     fillColor: "#0000ff",
+//     scale: 0.05
+//   },
+//   { path: faBus.icon[4],
+//     fillOpacity: 0.5,
+//     strokeWeight: 0.5,
+//     strokeColor: "#ff0000",
+//     fillColor: "#ff0000",
+//     scale: 0.05
+//   },
+//   { path: faRestroom.icon[4],
+//     fillOpacity: 0.5,
+//     strokeWeight: 0.5,
+//     strokeColor: "#64B00",
+//     fillColor: "#64B00",
+//     scale: 0.05
+//   },
+// ]
 
 const divStyle = {
   background: `white`,
@@ -237,7 +236,7 @@ const Map = () => {
             key={index}
             onLoad={onMarkerLoad}
             position={marker.position}
-            icon={faIcons[marker.iconid]}
+            icon={'./marker.svg'}
             animation={markerAnimation(index)}
             onClick={() => {setActiveMarker(index);return; handleActiveMarker(event, index); test(this)}}
           >
