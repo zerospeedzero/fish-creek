@@ -23,10 +23,6 @@ const Slider = ({slides}) => {
     // { breakpoint: 768,  cols: 1, rows: 1, gap: 10, loop: true, autoplay: 5000 }
 
   ]
-  // setInterval(() => {nextSlide}, 1000);
-  // useEffect(() => {
-  //   setInterval(() => {nextSlide}, 1000);
-  // }, [])
   return (
     <div id='gallery' className='mx-auto pt-[90px]'>
       <h1 className='text-2xl font-bold text-black text-center p-4'>Gallery of Fish Creek</h1>
