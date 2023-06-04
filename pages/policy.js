@@ -50,7 +50,7 @@ export default function forecast() {
           </div>
           <p className="mb-4">Data Security: We take appropriate measures to safeguard your information and protect it from unauthorized access or disclosure.</p>
           <p className="mb-4">Third-Party Links: Our Page may contain links to third-party websites. We do not control or endorse the content or practices of these websites and are not responsible for their privacy policies.</p>
-          <p className="mb-4">Children's Privacy: Our Page is not intended for children under the age of 13. We do not knowingly collect personal information from children without parental consent.</p>
+          <p className="mb-4">Children Privacy: Our Page is not intended for children under the age of 13. We do not knowingly collect personal information from children without parental consent.</p>
           <p className="mb-4">Changes to This Privacy Policy: We may update our Privacy Policy from time to time. Any changes will be posted on this page with a revised effective date.</p>
           <p className="mb-4">Contact Us: If you have any questions or concerns about our Privacy Policy, please contact us using the information provided below.</p>
         </div>
