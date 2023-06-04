@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export',
   // basePath: '/out',
   // assetPrefix: "/out",
   // basePath: '/~gcheng/fish_creek',
