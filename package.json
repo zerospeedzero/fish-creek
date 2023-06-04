@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@googlemaps/js-api-loader": "^1.15.2",
     "@react-google-maps/api": "^2.18.1",
     "autoprefixer": "10.4.14",

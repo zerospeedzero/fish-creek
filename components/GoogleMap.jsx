@@ -21,29 +21,30 @@ const polyLineOptions = {
 };
 
 // Marker styles
-// const faIcons = [
-//   { path: faCamera.icon[4],
-//     fillOpacity: 0.5,
-//     strokeWeight: 0.5,
-//     strokeColor: "#0000ff",
-//     fillColor: "#0000ff",
-//     scale: 0.05
-//   },
-//   { path: faBus.icon[4],
-//     fillOpacity: 0.5,
-//     strokeWeight: 0.5,
-//     strokeColor: "#ff0000",
-//     fillColor: "#ff0000",
-//     scale: 0.05
-//   },
-//   { path: faRestroom.icon[4],
-//     fillOpacity: 0.5,
-//     strokeWeight: 0.5,
-//     strokeColor: "#64B00",
-//     fillColor: "#64B00",
-//     scale: 0.05
-//   },
-// ]
+const faIcons = [
+  { path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z' ,
+    fillOpacity: 0.9,
+    strokeWeight: 2,
+    strokeColor: "#0000ff",
+    fillColor: "#0000ff",
+    scale: 2
+  },
+  { path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z' ,
+    fillOpacity: 0.9,
+    strokeWeight: 2,
+    strokeColor: "#0000ff",
+    fillColor: "#0000ff",
+    scale: 2
+  },
+  { path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z' ,
+    fillOpacity: 0.9,
+    strokeWeight: 2,
+    strokeColor: "#0000ff",
+    fillColor: "#0000ff",
+    scale: 2
+  },
+
+]
 
 const divStyle = {
   background: `white`,
@@ -236,7 +237,7 @@ const Map = () => {
             key={index}
             onLoad={onMarkerLoad}
             position={marker.position}
-            icon={'./marker.svg'}
+            icon={faIcons[marker.iconid]}
             animation={markerAnimation(index)}
             onClick={() => {setActiveMarker(index);return; handleActiveMarker(event, index); test(this)}}
           >
