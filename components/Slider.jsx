@@ -31,7 +31,7 @@ const Slider = ({slides}) => {
           return (
             <Carousel.Item key={index}>
               <img 
-                src={(process.env.NODE_ENV == 'development') ? slide.image : `${process.env.imagePrefix}` + slide.image} 
+                src={(process.env.NODE_ENV == 'development') ? slide.image : slide.image} 
                 alt='dummy'
                 width="100%"
                 onClick={(e) => {console.log('abc1')}}
