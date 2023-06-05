@@ -30,12 +30,10 @@ const Slider = ({slides}) => {
         {SliderData.map((slide, index) => {
           return (
             <Carousel.Item key={index}>
-              <Image 
+              <img 
                 src={(process.env.NODE_ENV == 'development') ? slide.image : `${process.env.imagePrefix}` + slide.image} 
-                alt='dummy' 
-                width='1440' 
-                height='600' 
-                objectFit='cover'
+                alt='dummy'
+                width="100%"
                 onClick={(e) => {console.log('abc1')}}
               />
               <div className="-mt-7">
