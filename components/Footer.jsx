@@ -18,6 +18,9 @@ const Footer = () => {
           </p>
           <h3 className="pt-4">Technology reference</h3>
           <p className="text-sm"><a href="https://nextjs.org/">Next JS framework</a></p>
+          <p className="text-sm"><a href="https://github.com/DevPanther/better-react-carousel">better-react-carousel</a></p>
+          <p className="text-sm"><a href="https://github.com/JustFly1984/react-google-maps-api">react-google-maps</a></p>
+          <p className="text-sm"><a href="https://github.com/tailwindlabs">Tailwind</a></p>
         </div>
         <p><a href='./policy#privacy'>Privacy Policy</a></p>
         <p><a href='./policy#term'>Terms of Service</a></p>
