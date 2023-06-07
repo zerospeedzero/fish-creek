@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React, {useEffect, useState} from 'react'
-import { SliderData } from './SliderData';
+// import { SliderData } from './SliderData';
 import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon } from 'next-share';
 import Carousel from 'better-react-carousel';
 import SocialMedia from './SocialMedia';
