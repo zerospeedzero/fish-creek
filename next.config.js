@@ -13,7 +13,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
     domains: [
-      'images.unsplash.com', 'openweathermap.org'
+      'images.unsplash.com', 'openweathermap.org', 'www.instagram.com'
     ]
   }
 }
