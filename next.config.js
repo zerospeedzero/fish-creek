@@ -12,9 +12,15 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     unoptimized: true,
+    // remotePatterns: [
+    //   {
+    //     protocol: "https",
+    //     hostname: "**",
+    //   },
+    // ],
     domains: [
-      'images.unsplash.com', 'openweathermap.org', 'www.instagram.com'
-    ]
+      'images.unsplash.com', 'openweathermap.org', 'www.instagram.com', 'scontent.cdninstagram.com'
+    ],
   }
 }
 

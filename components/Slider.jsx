@@ -35,7 +35,7 @@ const Slider = () => {
               <h4 className='bg-black/70 -mb-1 text-center text-white'>{feed.caption == null ? "Awesome!!": feed.caption}</h4>
               <a href={feed.permalink} target="_blank">
                 <img 
-                  src={(process.env.NODE_ENV == 'development') ? feed.media_url : feed.image} 
+                  src={(process.env.NODE_ENV == 'development') ? feed.media_url : feed.media_url} 
                   alt='dummy'
                   width="100%"
                   onClick={(e) => {console.log('abc1')}}
