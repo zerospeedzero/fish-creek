@@ -42,7 +42,7 @@ const Slider = () => {
                 />
               </a>
               <div className="-mt-7">
-                <SocialMedia/>
+                <SocialMedia message='' url={feed.permalink}/>
               </div>
             </Carousel.Item>
           )

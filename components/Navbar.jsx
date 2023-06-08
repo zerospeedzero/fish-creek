@@ -35,7 +35,7 @@ const Navbar = () => {
             <Link href='./#gallery' scroll={false}>Gallery</Link>
           </li>
           <li className='p-4'>
-            <Link href='./trails' scroll={false}>Trails</Link>
+            <Link href='./#trails' scroll={false}>Trails</Link>
           </li>
           <li className='p-4'>
             <Link href='./#contact' scroll={false}>Contact</Link>
@@ -57,7 +57,7 @@ const Navbar = () => {
               <Link href='./#gallery' scroll={false} onClick={handleNav}>Gallery</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='./trails' scroll={false} onClick={handleNav} >Trails</Link>
+              <Link href='./#trails' scroll={false} onClick={handleNav} >Trails</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
               <Link href='./#contact' scroll={false} onClick={handleNav}>Contact</Link>
