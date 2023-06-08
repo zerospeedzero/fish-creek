@@ -22,8 +22,8 @@ const Slider = () => {
   if (isLoading) return <p>Loading...</p>;
 
   const responsiveLayout = [
-    { breakpoint: 9999, cols: 3, rows: 1, gap: 10, loop: true, autoplay: 10000 },
-    { breakpoint: 1024, cols: 2, rows: 1, gap: 10, loop: true, autoplay: 10000 },
+    { breakpoint: 9999, cols: 3, rows: 1, gap: 20, loop: true, autoplay: 10000 },
+    { breakpoint: 1024, cols: 2, rows: 1, gap: 20, loop: true, autoplay: 10000 },
   ]
   return (
     <div id='gallery' className='mx-auto pt-[90px]'>
