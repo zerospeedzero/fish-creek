@@ -103,11 +103,11 @@ const Trails = () => {
           </figure>
           <figure class="mb-4 flex items-center">
             <img src="bunchberry.jpg" alt="Bunchberry" class="w-48 h-48 mr-4"/>
-            <figcaption>Bunchberry (Found on north-facing slopes. Also found on the narrow valley bottom at the west end of the park, extending east from Shannon Terrace to parts of Votier's Flats)</figcaption>
+            <figcaption>Bunchberry (Found on north-facing slopes. Also found on the narrow valley bottom at the west end of the park, extending east from Shannon Terrace to parts of Votier Flats)</figcaption>
           </figure>
           <figure class="mb-4 flex items-center">
             <img src="purple-clematis.jpg" alt="Purple Clematis" class="w-48 h-48 mr-4"/>
-            <figcaption>Purple Clematis (Found on north-facing slopes. Also found on the narrow valley bottom at the west end of the park, extending east from Shannon Terrace to parts of Votier's Flats)</figcaption>
+            <figcaption>Purple Clematis (Found on north-facing slopes. Also found on the narrow valley bottom at the west end of the park, extending east from Shannon Terrace to parts of Votier Flats)</figcaption>
           </figure>
           <h1 class="text-2xl font-bold mt-8 mb-4">Potential Wildlife</h1>
           <figure class="mb-4 flex items-center">
