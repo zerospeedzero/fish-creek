@@ -8,11 +8,9 @@ const SocialMedia = ({message, url}) => {
   const title = (message == '') ? 'Get more information about Fish Creek from City Hiker offiical web site.' : message;
   const postUrl = (url == '') ? 'https://www.instagram.com' : url;
   return (
-    <div className='text-white cursor-pointer z-[2] flex justify-center'>
-    {/* <button aria-label="facebook" style="background-color: transparent; border: none; padding: 0px; font: inherit; color: inherit; cursor: pointer; outline: none;"> */}
-
+    <div className='text-white cursor-pointer z-[2] flex flex-col justify-center'>
       <a href={postUrl} target="_blank" aria-label="Instagram" className='bg-transparent border-none p-0' >
-        <img className='m-2' width="42" src="./instagram-round-color-icon.svg"/>
+        <img className='m-2 opacity-60 hover:opacity-100' width="42" src="./instagram-round-color-icon.svg"/>
       </a>
       <FacebookShareButton
         url={'https://fish-creek.azurewebsites.net'}

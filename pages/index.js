@@ -4,6 +4,7 @@ import { SliderData} from '../components/SliderData';
 import Slider from '../components/Slider';
 import Instagram from '../components/Instagram';
 import Footer from '../components/Footer';
+import Map from '../components/Map';
 import Trails from '../components/Trails';
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -23,6 +24,7 @@ export default function Home() {
       </Head>
       <Hero heading='Welcome to Fish Creek' message="Hiking in Calgary City"/>
       <Slider slides={SliderData}/>
+      <Map/>
       <Trails/>
       <Instagram/>
       <Footer/>

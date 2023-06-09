@@ -8,6 +8,8 @@ import SocialMedia from './SocialMedia';
 const Slider = () => {
   const [feeds, setFeeds ] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [share, setShare] = useState(false);
+
   useEffect(() => {
     setLoading(true);
     const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_KEY}`;
@@ -22,32 +24,40 @@ const Slider = () => {
   if (isLoading) return <p>Loading...</p>;
 
   const responsiveLayout = [
-    { breakpoint: 9999, cols: 3, rows: 1, gap: 20, loop: true, autoplay: 10000 },
-    { breakpoint: 1024, cols: 2, rows: 1, gap: 20, loop: true, autoplay: 10000 },
+    { breakpoint: 9999, cols: 4, rows: 1, gap: 40, loop: true, autoplay: 10000 },
+    { breakpoint: 1700, cols: 3, rows: 1, gap: 40, loop: true, autoplay: 10000 },
+    { breakpoint: 1100, cols: 3, rows: 2, gap: 40, loop: true, autoplay: 10000 },
+    { breakpoint: 1024, cols: 2, rows: 1, gap: 40, loop: true, autoplay: 10000 },
   ]
   return (
-    <div id='gallery' className='mx-auto pt-[90px]'>
+    <div id='gallery' className='mx-auto pt-[90px] pb-[40] min-h-[calc(100vh)]'>
       <h1 className='text-2xl font-bold text-black text-center p-4'>Gallery of Fish Creek</h1>
+      <div className='pt-5'>
         <Carousel gap={10} scrollSnap loop showDots responsiveLayout={responsiveLayout}>
         {feeds && feeds.map((feed, index) => {
           return (
             <Carousel.Item key={index}>
-              <h4 className='bg-black/70 -mb-1 text-center text-white'>{feed.caption == null ? "Awesome!!": feed.caption}</h4>
-              <a href={feed.permalink} target="_blank">
-                <img 
+              <div className="flex">
+                <img className="w-100%" 
                   src={(process.env.NODE_ENV == 'development') ? feed.media_url : feed.media_url} 
                   alt='dummy'
-                  width="100%"
                   onClick={(e) => {console.log('abc1')}}
                 />
-              </a>
-              <div className="-mt-7">
-                <SocialMedia message='' url={feed.permalink}/>
+                {share &&
+                  <div className="-ml-16 pt-3" onClick={()=>setShare(false)}>
+                    <SocialMedia message={feed.caption} url={feed.permalink}/>
+                  </div>
+                }
+              </div>
+              <div className="flex bg-black/70 -mb-1 text-center items-center text-white h-12 justify-between p-4">
+                <p className='text-white'>{feed.caption == null ? "Awesome!!": feed.caption}</p>
+                <img className="hover:bg-white/20" src="./share.svg" alt="share" onClick={()=>setShare(!share)}/>
               </div>
             </Carousel.Item>
           )
         })}
         </Carousel>
+      </div>
       {/* </div> */}
     </div>
   )
