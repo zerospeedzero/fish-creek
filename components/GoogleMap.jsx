@@ -247,8 +247,6 @@ const Map = () => {
     MarkerData.forEach(({ position }) => bounds.extend(position));
     bounds.extend(currentLocation);
     map.fitBounds(bounds);
-    // console.log('currentlocationload is called');
-    // console.log(MarkerData);
   }
 
   return (
