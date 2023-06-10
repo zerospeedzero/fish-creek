@@ -9,6 +9,7 @@ const Slider = () => {
   const [feeds, setFeeds ] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [share, setShare] = useState(false);
+  const [clickIndex, setClickIndex] = useState();
 
   useEffect(() => {
     setLoading(true);
@@ -41,9 +42,9 @@ const Slider = () => {
                 <img className="w-100%" 
                   src={(process.env.NODE_ENV == 'development') ? feed.media_url : feed.media_url} 
                   alt='dummy'
-                  onClick={(e) => {console.log('abc1')}}
+                  onClick={() => {console.log('image is clicked')}}
                 />
-                {share &&
+                {share && clickIndex == index && 
                   <div className="-ml-16 pt-3" onClick={()=>setShare(false)}>
                     <SocialMedia message={feed.caption} url={feed.permalink}/>
                   </div>
@@ -51,7 +52,7 @@ const Slider = () => {
               </div>
               <div className="flex bg-black/70 -mb-1 text-center items-center text-white h-12 justify-between p-4">
                 <p className='text-white'>{feed.caption == null ? "Awesome!!": feed.caption}</p>
-                <img className="hover:bg-white/20" src="./share.svg" alt="share" onClick={()=>setShare(!share)}/>
+                <img className="hover:bg-white/20" src="./share.svg" alt="share" onClick={()=>{setShare(!share); setClickIndex(index);}}/>
               </div>
             </Carousel.Item>
           )

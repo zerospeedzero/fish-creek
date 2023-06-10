@@ -3,7 +3,7 @@ import { GoogleMap, KmlLayer, useLoadScript, StreetViewPanorama, InfoWindow, onL
 import {MarkerData} from './MarkerData.js';
 import {TrailData} from './TrailData.js';
 // import {faCamera, faBus, faRestroom} from "@fortawesome/free-solid-svg-icons";
-import {Mapstyle} from './Mapstyle.js';
+import {Mapstyle} from './Mapstyle2.js';
 import Image from 'next/image';
 
 const polyLineOptions = {

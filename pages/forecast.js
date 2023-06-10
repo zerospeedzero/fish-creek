@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Forecast from '../components/Forecast'
+import Forecast from '../components/ForecastSummary'
 import { Inter } from 'next/font/google';
 // const inter = Inter({ subsets: ['latin'] })
 

@@ -15,6 +15,11 @@ const WeatherForecast = () => {
 
         // Extract the next 5 days forecast from the API response
         const forecastData = data.list.slice(0, 35);
+        const resultData = data.list.slice(0, 35);
+        resultData.forEach(() => {
+          
+        }) 
+        console.log(resultData);
         setForecast(forecastData);
       } catch (error) {
         console.error('Error fetching weather forecast:', error);
