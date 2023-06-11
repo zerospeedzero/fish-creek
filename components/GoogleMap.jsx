@@ -90,7 +90,7 @@ const Map = () => {
   const [streetVisable, setStreetVisable] = useState(false);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY1,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
     libraries: ["places"],
   });
 
