@@ -55,7 +55,7 @@ const Weather = ({heading, message}) => {
       </div>
       <div className="h-1/3">
         { !weather.main && (menu=="Weather") &&
-          <p className="hidden sm:block float-right text-justify w-[400px] mt-24 p-2 text-sm italic bg-black/30">Explore Fishcreek hiking trail's interactive map. Escape the city and enjoy remarkable landscapes with a variety of trails. Whether a beginner or an expert, Fish Creek offers something for everyone in Calgary's heart.</p>
+          <p className="hidden sm:block float-right text-justify w-[400px] mt-24 p-2 text-sm italic bg-black/30">Explore Fishcreek hiking trail interactive map. Escape the city and enjoy remarkable landscapes with a variety of trails. Whether a beginner or an expert, Fish Creek offers something for everyone in Calgary heart.</p>
         }
         {weather.main && (menu=="Forecast") && 
           <div className='h-1/3 relative p-8 rounded-md'>

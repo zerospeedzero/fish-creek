@@ -50,8 +50,8 @@ const ForecastSummary = () => {
     <div className='flex flex-col justify-between'>
       <h3 className="text-center text-3xl pb-5">Weather forecast</h3>
       <div className="flex z-[2]">
-        {Object.entries(groupedForecast).map(([date, items]) => (
-            <div className="flex flex-wrap justify-start p-2">
+        {Object.entries(groupedForecast).map(([date, items],index) => (
+            <div key={index} className="flex flex-wrap justify-start p-2">
               {items.map((item) => (
                 <div key={item.dt} className="p-2 bg-white/80 text-black border border-gray-300 rounded hover:animate-bounce">
                   <div className="time text-sm font-semibold">
