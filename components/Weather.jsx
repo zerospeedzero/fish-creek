@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import ForecastSummary from '../components/ForecastSummary';
 
 const Weather = ({heading, message}) => {
-  // const [city, setCity] = useState('');
   const router = useRouter();
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
@@ -16,7 +15,6 @@ const Weather = ({heading, message}) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=fish%20creek&units=metric&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
   console.log('weather url: ' + url)
   const fetchWeather = (e) => {
-    // setLoading(true);
     if (menu == "Weather") {
       axios.get(url).then((response) => {
         setWeather(response.data);
@@ -24,10 +22,7 @@ const Weather = ({heading, message}) => {
       setMenu('Forecast')
     } else {
       setMenu('Weather')
-      // router.push('./forecast')   
     }
-    // setCity('');
-    // setLoading(false);
   };
   
   return (

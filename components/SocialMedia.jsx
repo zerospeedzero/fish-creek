@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon } from 'next-share';
 
-
 const SocialMedia = ({message, url}) => {
   const title = (message == '') ? 'Get more information about Fish Creek from City Hiker offiical web site.' : message;
   const postUrl = (url == '') ? 'https://www.instagram.com' : url;

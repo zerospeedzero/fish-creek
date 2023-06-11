@@ -1,0 +1,125 @@
+{
+  "trails": [
+    {
+      "name": "Votier Flats Trail",
+      "trailInformation": {
+        "description": "Moderately challenging",
+        "duration": "Takes around 2 hr 16 min",
+        "activities": [
+          "Good for bird watching",
+          "Hiking",
+          "Biking"
+        ],
+        "dogFriendly": true,
+        "paved": false
+      },
+      "wildlife": {
+        "summer": [
+          "Tennesse Warbler (rare)",
+          "Yellow warbler (common)",
+          "Common yellowthroat (uncommon)",
+          "Western Meadowlark (rare)"
+        ],
+        "winter": [
+          "Snow bunting (rare)",
+          "Gray-crowned rosy finch (accidental)",
+          "Pine grosbeak (rare)"
+        ]
+      },
+      "flowers": {
+        "Grasslands": [
+          "Brown-eyed susan",
+          "Buffalo bean",
+          "Common yarrow",
+          "Prairie crocus"
+        ],
+        "Parkland": [
+          "Asters",
+          "Cow parsnip",
+          "Twining honeysuckle"
+        ],
+        "Riverine": [
+          "Bluebells"
+        ],
+        "WhiteSpruce": [
+          "Bunchberry",
+          "Purple clematis"
+        ]
+      }
+    }
+  ],
+  "wildlifeImages": [
+    {
+      "name": "Boreal Chorus Frog",
+      "image": "boreal-chorus-frog.jpg",
+      "description": "Boreal Chorus Frog (most common in summer, August)"
+    },
+    {
+      "name": "Wood Frog",
+      "image": "wood-frog.jpg",
+      "description": "Wood Frog (most common in summer, August)"
+    },
+    {
+      "name": "Coyote",
+      "image": "coyote.jpg",
+      "description": "Coyote (more common in summer/fall)"
+    },
+    {
+      "name": "Beaver",
+      "image": "beaver.jpg",
+      "description": "Beaver (most common in summer, August) "
+    }
+  ],
+  "flowerImages": [
+    {
+      "name": "Brown-Eyed Susan",
+      "image": "brown-eyed-susan.jpg",
+      "description": "Brown-Eyed Susan (Found on dry, south-facing slopes and wide areas of the valley, primarily the east end of the park)"
+    },
+    {
+      "name": "Buffalo Bean",
+      "image": "buffalo-bean.jpg",
+      "description": "Buffalo Bean (Found on dry, south-facing slopes and wide areas of the valley, primarily the east end of the park)"
+    },
+    {
+      "name": "Common Yarrow",
+      "image": "common-yarrow.jpg",
+      "description": "Common Yarrow (Found on dry, south-facing slopes and wide areas of the valley, primarily the east end of the park)"
+    },
+    {
+      "name": "Prairie Crocus",
+      "image": "prairie-crocus.jpg",
+      "description": "Prairie Crocus (Found on dry, south-facing slopes and wide areas of the valley, primarily the east end of the park)"
+    },
+    {
+      "name": "Asters",
+      "image": "asters.jpg",
+      "description": "Asters (Found in areas moister than grasslands, often at the edge of floodplains and in ravines)"
+    },
+    {
+      "name": "Cow Parsnip",
+      "image": "cow-parsnip.jpg",
+      "description": "Cow Parsnip (Found in areas moister than grasslands, often at the edge of floodplains and in ravines)"
+    },
+    {
+      "name": "Twining Honeysuckle",
+      "image": "twining-honeysuckle.jpg",
+      "description": "Twining Honeysuckle (Found in areas moister than grasslands, often at the edge of floodplains and in ravines)"
+    },
+    {
+      "name": "Bluebells",
+      "image": "bluebells.jpg",
+      "description": "Bluebells (Found along the banks of Fish Creek and the Bow River)"
+    },
+    {
+      "name": "Bunchberry",
+      "image": "bunchberry.jpg",
+      "description": "Bunchberry (Found on north-facing slopes. Also found on the narrow valley bottom at the west end of the park, extending east from Shannon Terrace to parts of Votier Flats)"
+    },
+    {
+      "name": "Purple Clematis",
+      "image": "purple-clematis.jpg",
+      "description": "Purple Clematis (Found on north-facing slopes. Also found on the narrow valley bottom at the west end of the park, extending east from Shannon Terrace to parts of Votier Flats)"
+    }
+  ]
+}

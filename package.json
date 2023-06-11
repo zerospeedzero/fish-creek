@@ -17,6 +17,7 @@
     "better-react-carousel": "^1.1.1",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
+    "framer-motion": "^10.12.16",
     "install": "^0.13.0",
     "next": "13.4.3",
     "next-share": "^0.20.0",

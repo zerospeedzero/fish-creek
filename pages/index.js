@@ -5,7 +5,7 @@ import Slider from '../components/Slider';
 import Instagram from '../components/Instagram';
 import Footer from '../components/Footer';
 import Map from '../components/Map';
-import Trails from '../components/Trails';
+import Trails from '../components/TrailInfo';
 
 // const inter = Inter({ subsets: ['latin'] })
 
