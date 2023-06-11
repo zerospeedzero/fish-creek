@@ -35,7 +35,7 @@ const Slider = () => {
     { breakpoint: 1024, cols: 2, rows: 1, gap: 40, loop: true, autoplay: 10000 },
   ]
   return (
-    <div ref={gallery} id='gallery' className='max-w-screen-xl lg:max-w-screen-lg mx-auto pt-[90px] pb-[40] min-h-[calc(100vh)]' 
+    <div ref={gallery} id='gallery' className='max-w-screen-xl lg:max-w-screen-xl mx-auto pt-[90px] pb-[40] min-h-[calc(100vh)]' 
       initial={{y:-40}} 
       whileInView={{y:0}} viewport={{margin: '0px'}} transition={{ ease: "easeOut", duration: 2 }}
       >

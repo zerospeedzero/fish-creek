@@ -9,20 +9,20 @@ const SocialMedia = ({message, url}) => {
   return (
     <div className='text-white cursor-pointer z-[2] flex flex-col justify-center'>
       <a href={postUrl} target="_blank" aria-label="Instagram" className='bg-transparent border-none p-0' >
-        <img className='m-2 opacity-100 hover:animate-spin' width="42" src="./instagram-round-color-icon.svg"/>
+        <img className='m-2 opacity-100 hover:animate-spin' width="37" src="./instagram-round-color-icon.svg"/>
       </a>
       <FacebookShareButton
         url={'https://fish-creek.azurewebsites.net'}
         quote={title}
         hashtag={'#cityhiker #fishcreek'}
       >
-        <FacebookIcon size={42} round className='m-2 opacity-100 hover:animate-spin'/>
+        <FacebookIcon size={37} round className='m-2 opacity-100 hover:animate-spin'/>
       </FacebookShareButton>
       <TwitterShareButton
         url={'https://fish-creek.azurewebsites.net'}
         title={title}
       >
-        <TwitterIcon size={42} round className='m-2 opacity-100 hover:animate-spin' />
+        <TwitterIcon size={37} round className='m-2 opacity-100 hover:animate-spin' />
       </TwitterShareButton>
 
       <WhatsappShareButton
@@ -30,10 +30,10 @@ const SocialMedia = ({message, url}) => {
         title={title}
         separator=":: "
       >
-        <WhatsappIcon size={42} round className='m-2 opacity-100 hover:animate-spin'/>
+        <WhatsappIcon size={37} round className='m-2 opacity-100 hover:animate-spin'/>
       </WhatsappShareButton>
       <LinkedinShareButton url={'https://fish-creek.azurewebsites.net'}>
-        <LinkedinIcon size={42} round className='m-2 opacity-100 hover:animate-spin'/>
+        <LinkedinIcon size={37} round className='m-2 opacity-100 hover:animate-spin'/>
       </LinkedinShareButton>
     </div>
   )

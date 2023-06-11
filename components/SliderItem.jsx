@@ -34,7 +34,7 @@ const SliderItem = ({feed, index, gallery}) => {
   // <motion.div ref={ref} initial={{x:-100, scale:0.8}} whileInView={{x:0, scale: 1}} viewport={{margin: '0px'}} transition={{ ease: "easeOut", duration: 2 }}>
     // <motion.div ref={ref} initial={{x:-100, scale:0.8}} animate={{x:0, scale:1}} transition={{duration:0.8, delay:0.5, ease:[0, 0.71, 0.2, 1.01]}}>
   return (
-    <motion.div ref={ref} animate={{x, y, rotate, scale: scale}} transition={{ ease: "easeOut", duration: 0.2 }}>
+    <motion.div ref={ref} animate={{x, y, rotate, scale: scale}} transition={{ ease: "easeOut", duration: 0.8 }}>
       <div className="flex">
         <img className="w-100%" 
           src={(process.env.NODE_ENV == 'development') ? feed.media_url : feed.media_url} 
@@ -42,7 +42,7 @@ const SliderItem = ({feed, index, gallery}) => {
           onClick={() => {console.log('image is clicked')}}
         />
         {share && clickIndex == index && 
-          <div className="-ml-16 pt-3" onClick={()=>setShare(false)}>
+          <div className="-ml-14 pt-3" onClick={()=>setShare(false)}>
             <SocialMedia message={feed.caption} url={feed.permalink}/>
           </div>
         }
