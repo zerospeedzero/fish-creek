@@ -8,7 +8,11 @@ const TrailInfo = () => {
   const flowerImages = trailData.flowerImages;
 
   return (
-    <div id="trails" className="max-w-screen-lg mx-auto pt-[90px] pb-[40] min-h-[calc(100vh)]">
+    <motion.div id="trails" className="max-w-screen-lg mx-auto pt-[90px] pb-[40] min-h-[calc(100vh)]"
+      initial={{opacity:0.2}}
+      whileInView={{opacity:1}}
+      transition={{ ease: "easeOut", duration: 0.7 }}
+    >
       <h1 className="text-2xl font-bold text-black text-center p-4">Trails information</h1>
       <div className="pt-5 flex justify-around flex-col md:flex-row">
         <motion.section className="text-black container mx-auto p-4"
@@ -99,7 +103,7 @@ const TrailInfo = () => {
           ))}
         </div>
       </section>      
-    </div>
+    </motion.div>
   );
 };
 

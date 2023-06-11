@@ -4,6 +4,7 @@ import {MarkerData} from './MarkerData.js';
 // import {TrailData} from './TrailData.js';
 import {Mapstyle} from './Mapstyle2.js';
 import Image from 'next/image';
+import {motion} from 'framer-motion';
 
 const polyLineOptions = {
   strokeColor: '#FF0000',
@@ -51,7 +52,7 @@ const divStyle = {
   padding: 15,
 }
 
-const restriction = {
+const votierFalats = {
   latLngBounds: {
     north: 50.936212,
     south: 50.921691,
@@ -59,13 +60,6 @@ const restriction = {
     east: -114.075641
   },
   strictBounds: false,
-}
-
-const options = {
-  mapTypeControl: false,
-  mapTypeId: 'terrain',
-  styles: Mapstyle,
-  restriction: restriction
 }
 
 const test = (arg) => {
@@ -78,6 +72,8 @@ const Map = () => {
 
   const [map, setMap] = useState(null);
   const [bounds, setBounds] = useState(null);
+  const [zoom, setZoom] = useState(3);
+  const [restriction, setRestriction] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [searchLngLat, setSearchLngLat] = useState(null);
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -112,6 +108,18 @@ const Map = () => {
 
   const markerAnimation = (index) => {
     return index == activeMarker ? 1 : 2
+  }
+
+  const mapAnimationStart = () => {
+    // setZoom(3);
+    // for (let i = 0; i < 10; i++) {
+    //   setTimeout(()=>{
+    //     if (i == 9) {setRestriction(votierFalats)}
+    //     setZoom(zoom + 1);
+    //   }, i * 100)
+    // }
+    // setZoom(13);
+    // console.log('testing')
   }
 
   // handle place change on search
@@ -248,7 +256,13 @@ const Map = () => {
   }
 
   return (
-    <div className='w-full'>
+    <motion.div className='w-full overflow-hidden'
+        initial={{scaleX: 0.27, scaleY: 0.6, borderRadius: '50%'}}
+        // animate={{x, y, rotate, scaleX: scaleX, scaleY: scaleY, borderRadius: borderRadius}} 
+        whileInView={{scaleX: 1, scaleY: 1, borderRadius: '0%'}}
+        transition={{ ease: "easeOut", duration: 1.5, delay: 1 }}
+        onAnimationStart={mapAnimationStart}
+    >
       {locating && (
         <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[2] flex justify-center items-center' >
           <svg className="bg-white animate-spin h-5 w-5 mr-3" viewBox="0 0 36 36">
@@ -256,8 +270,8 @@ const Map = () => {
         </div>
       )}
       <GoogleMap
-        options={options}
-        zoom={currentLocation || selectedPlace ? 18 : 13}
+        options={{mapTypeControl: false, mapTypeId: 'terrain', styles: Mapstyle, restriction: votierFalats}}
+        zoom={currentLocation || selectedPlace ? 18 : zoom}
         center={currentLocation || searchLngLat || center}
         mapContainerClassName="map"
         mapContainerStyle={{ width: "100%", height: "calc(100vh - 150px)", margin: "auto" }}
@@ -295,7 +309,7 @@ const Map = () => {
           <KmlLayer url={kmllayer}/>
         }
       </GoogleMap>
-    </div>
+    </motion.div>
   );
 };
 

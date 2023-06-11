@@ -11,6 +11,11 @@ html {
   background-image: url('../public/background.jpg');
 }
 
+.city-image {
+  background-image: url('../public/city-5771561_640-2-2.png');
+}
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
