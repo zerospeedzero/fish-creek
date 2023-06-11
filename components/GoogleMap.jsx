@@ -96,6 +96,11 @@ const Map = () => {
     console.log(event)
   }
 
+  const widthHeightRatio = () => {
+    const mapId = document.getElementById('map');
+    return mapId.offsetWidth / mapId.offsetHeight;
+  }
+
   const onLoad = infoWindow => {
     // console.log('infoWindow: ', infoWindow)
   }
@@ -256,8 +261,8 @@ const Map = () => {
   }
 
   return (
-    <motion.div className='w-full overflow-hidden'
-        initial={{scaleX: 0.27, scaleY: 0.6, borderRadius: '50%'}}
+    <motion.div id="mapContainer" className='w-full overflow-hidden'
+        initial={{scaleX: 0.27, scaleY: widthHeightRatio() * 0.27 * 1.15 , borderRadius: '50%'}}
         // animate={{x, y, rotate, scaleX: scaleX, scaleY: scaleY, borderRadius: borderRadius}} 
         whileInView={{scaleX: 1, scaleY: 1, borderRadius: '0%'}}
         transition={{ ease: "easeOut", duration: 1.5, delay: 1 }}

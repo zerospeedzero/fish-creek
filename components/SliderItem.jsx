@@ -13,7 +13,7 @@ const SliderItem = ({feed, index, gallery}) => {
   const ref = useRef();
   const { scrollYProgress } = useScroll({
     target: gallery,
-    offset: ["start end", "center center"]
+    offset: ["start end", "0.1 center"]
   });
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     // console.log("Page scroll: ", latest)
