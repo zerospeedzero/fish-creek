@@ -7,8 +7,12 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com"/> 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin=""/>
         <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"/>
+        <script src="./gtm.js"></script>
       </Head>
       <body>
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NR7792R" height="0" width="0" className="hidden invisible"></iframe>
+        </noscript>
         <Main />
         <NextScript />
       </body>

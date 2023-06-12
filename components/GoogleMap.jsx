@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
-import { GoogleMap, KmlLayer, useLoadScript, StreetViewPanorama, InfoWindow, onLoad, Marker, MarkerF, InfoWindowF, Autocomplete, Polyline} from "@react-google-maps/api";
+import { GoogleMap, KmlLayer, useLoadScript, useGoogleMap, StreetViewPanorama, InfoWindow, onLoad, MarkerF, InfoWindowF, Autocomplete, Polyline} from "@react-google-maps/api";
 import {MarkerData} from './MarkerData.js';
 // import {TrailData} from './TrailData.js';
 import {Mapstyle} from './Mapstyle2.js';
 import Image from 'next/image';
 import {motion} from 'framer-motion';
+
 
 const polyLineOptions = {
   strokeColor: '#FF0000',
@@ -19,6 +20,7 @@ const polyLineOptions = {
   radius: 30000,
   zIndex: 1
 };
+
 
 // Marker styles
 const faIcons = [
@@ -62,17 +64,18 @@ const votierFalats = {
   strictBounds: false,
 }
 
+
 const test = (arg) => {
   console.log(arg);
 }
 
 const Map = () => {
+  const mapid = useRef(null);
   const center = { lat:50.9289515, lng: -114.099215 };
   const position = {lat:50.9289515, lng: -114.099215};
 
   const [map, setMap] = useState(null);
   const [bounds, setBounds] = useState(null);
-  const [zoom, setZoom] = useState(3);
   const [restriction, setRestriction] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [searchLngLat, setSearchLngLat] = useState(null);
@@ -113,18 +116,6 @@ const Map = () => {
 
   const markerAnimation = (index) => {
     return index == activeMarker ? 1 : 2
-  }
-
-  const mapAnimationStart = () => {
-    // setZoom(3);
-    // for (let i = 0; i < 10; i++) {
-    //   setTimeout(()=>{
-    //     if (i == 9) {setRestriction(votierFalats)}
-    //     setZoom(zoom + 1);
-    //   }, i * 100)
-    // }
-    // setZoom(13);
-    // console.log('testing')
   }
 
   // handle place change on search
@@ -260,6 +251,18 @@ const Map = () => {
     map.fitBounds(bounds);
   }
 
+  const mapAnimationStart = () => {
+    map.setZoom(4);
+    // setTimeout(()=>{map.setZoom(15)}, 5000);
+    for (let i = 4; i < 16; i++) {
+      setTimeout(()=>{
+        if (i == 15) {map.setRestriction(votierFalats) }
+        map.setZoom (i);
+      }, 1000 + i * 136)
+    }
+    console.log(map);
+  }
+
   return (
     <motion.div id="mapContainer" className='w-full overflow-hidden'
         initial={{scaleX: 0.27, scaleY: widthHeightRatio() * 0.27 * 1.15 , borderRadius: '50%'}}
@@ -275,14 +278,15 @@ const Map = () => {
         </div>
       )}
       <GoogleMap
-        options={{mapTypeControl: false, mapTypeId: 'terrain', styles: Mapstyle, restriction: votierFalats}}
-        zoom={currentLocation || selectedPlace ? 18 : zoom}
+        id="mapid"
+        options={{mapTypeControl: false, mapTypeId: 'terrain', styles: Mapstyle, restriction: null}}
+        zoom={currentLocation || selectedPlace ? 18 : 4}
         center={currentLocation || searchLngLat || center}
         mapContainerClassName="map"
         mapContainerStyle={{ width: "100%", height: "calc(100vh - 150px)", margin: "auto" }}
         onLoad={onMapLoad}
         onUnmount={onUnmount}
-        onClick={() => setActiveMarker(null)}
+        onClick={() => {setActiveMarker(null);}}
         onDblClick={(event) => showStreetPanorama(event)}
       >
         {selectedPlace && <Marker position={searchLngLat} />}
