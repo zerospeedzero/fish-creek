@@ -23,7 +23,6 @@ const Slider = () => {
       .then((data) => {
         setFeeds(data.data);
         setLoading(false);
-        console.log('use data' + feeds);
       }) 
   },[])
   if (isLoading) return <p>Loading...</p>;
@@ -35,10 +34,7 @@ const Slider = () => {
     { breakpoint: 1024, cols: 2, rows: 1, gap: 40, loop: true, autoplay: 10000 },
   ]
   return (
-    <div ref={gallery} id='gallery' className='max-w-screen-xl lg:max-w-screen-xl mx-auto pt-[90px] pb-[40] min-h-[calc(100vh)]' 
-      initial={{y:-40}} 
-      whileInView={{y:0}} viewport={{margin: '0px'}} transition={{ ease: "easeOut", duration: 2 }}
-      >
+    <div ref={gallery} id='gallery' className='max-w-screen-xl lg:max-w-screen-xl mx-auto pt-[90px] pb-[40] min-h-[calc(100vh)]'>
       <h1 className='text-2xl font-bold text-black text-center p-4'>Gallery of Fish Creek</h1>
       <div className='pt-5 h-fill'>
         <Carousel gap={10} scrollSnap loop showDots responsiveLayout={responsiveLayout}>

@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url);
+      console.log('route change event is logged' + url);
     };
     router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
@@ -19,22 +20,6 @@ export default function App({ Component, pageProps }) {
   }, [router.events]);
   return  (
     <>
-      <Script strategy="afterInteractive" src={"https://www.googletagmanager.com/gtag/js?id=" + GA_MEASUREMENT_ID}></Script>
-      <Script
-        id='google-analytics'
-        strategy="afterInteractive"
-        GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} 
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-21QYR215HP' , {
-              page_path: window.location.pathname,
-            });
-          `,
-          }}
-      />
       <Navbar/>
       <Component {...pageProps} />
     </>

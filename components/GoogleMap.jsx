@@ -64,11 +64,6 @@ const votierFalats = {
   strictBounds: false,
 }
 
-
-const test = (arg) => {
-  console.log(arg);
-}
-
 const Map = () => {
   const mapid = useRef(null);
   const center = { lat:50.9289515, lng: -114.099215 };
@@ -264,13 +259,11 @@ const Map = () => {
         }
       }, 1000 + i * 136)
     }
-    console.log(map);
   }
 
   return (
     <motion.div id="mapContainer" className='w-full overflow-hidden'
         initial={{scaleX: 0.27, scaleY: widthHeightRatio() * 0.27 * 1.15 , borderRadius: '50%'}}
-        // animate={{x, y, rotate, scaleX: scaleX, scaleY: scaleY, borderRadius: borderRadius}} 
         whileInView={{scaleX: 1, scaleY: 1, borderRadius: '0%'}}
         transition={{ ease: "easeOut", duration: 1.5, delay: 1 }}
         onAnimationStart={mapAnimationStart}
