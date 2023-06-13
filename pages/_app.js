@@ -10,17 +10,16 @@ export default function App({ Component, pageProps }) {
   const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   useEffect(() => {
     const handleRouteChange = (url) => {
-        gtag.pageview(url);
+      gtag.pageview(url);
     };
     router.events.on("routeChangeComplete", handleRouteChange);
-    if (router.pathname == '/trails') {
-      window.scrollTo(0,0);
-    }
-    return () => {router.events.off("routeChangeComplete", handleRouteChange);};
-  }, [router]);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   return  (
     <>
-      <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></Script>
+      <Script strategy="afterInteractive" src={"https://www.googletagmanager.com/gtag/js?id=" + GA_MEASUREMENT_ID}></Script>
       <Script
         id='google-analytics'
         strategy="afterInteractive"

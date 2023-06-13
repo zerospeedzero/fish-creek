@@ -16,23 +16,12 @@ const SliderItem = ({feed, index, gallery}) => {
     offset: ["start end", "0.1 center"]
   });
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // console.log("Page scroll: ", latest)
     if (index % 2 === 0) {
       setX((400 * latest) - 400 );
     } else  {
       setY(600 - (600 * latest));
     }
-    // switch ( index % 4) {
-    //   case 0 : setX((400 * latest) - 400 );
-    //   case 1 : setY(400 - (400 * latest));
-    //   case 2 : setX(400 - (400 * latest));
-    //   case 3 : setY((400 * latest) - 400);
-    // }
-    // console.log(x);
-
   })
-  // <motion.div ref={ref} initial={{x:-100, scale:0.8}} whileInView={{x:0, scale: 1}} viewport={{margin: '0px'}} transition={{ ease: "easeOut", duration: 2 }}>
-    // <motion.div ref={ref} initial={{x:-100, scale:0.8}} animate={{x:0, scale:1}} transition={{duration:0.8, delay:0.5, ease:[0, 0.71, 0.2, 1.01]}}>
   return (
     <motion.div ref={ref} animate={{x, y, rotate, scale: scale}} transition={{ ease: "easeOut", duration: 0.8 }}>
       <div className="flex">

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Hero from '../components/Hero';
-import { SliderData} from '../components/SliderData';
+// import { SliderData} from '../components/SliderData';
 import Slider from '../components/Slider';
 import Instagram from '../components/Instagram';
 import Footer from '../components/Footer';
@@ -23,7 +23,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico'/>
       </Head>
       <Hero heading='Welcome to Fish Creek' message="Hiking in Calgary City"/>
-      <Slider slides={SliderData}/>
+      <Slider/>
       <Map/>
       <Trails/>
       <Instagram/>

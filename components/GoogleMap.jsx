@@ -256,8 +256,12 @@ const Map = () => {
     // setTimeout(()=>{map.setZoom(15)}, 5000);
     for (let i = 4; i < 16; i++) {
       setTimeout(()=>{
-        if (i == 15) {map.setRestriction(votierFalats) }
-        map.setZoom (i);
+        if (i == 15) {
+          map.setRestriction(votierFalats); 
+          map.setZoom(4);
+        } else {
+          map.setZoom (i);
+        }
       }, 1000 + i * 136)
     }
     console.log(map);
@@ -289,7 +293,7 @@ const Map = () => {
         onClick={() => {setActiveMarker(null);}}
         onDblClick={(event) => showStreetPanorama(event)}
       >
-        {selectedPlace && <Marker position={searchLngLat} />}
+        {selectedPlace && <MarkerF position={searchLngLat} />}
         {currentLocation && <MarkerF position={currentLocation} onLoad={currentLocationLoad} animation={1}/>}
         {MarkerData.map((marker, index) => (
           <MarkerF
