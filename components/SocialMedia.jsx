@@ -12,7 +12,7 @@ const SocialMedia = ({message, url}) => {
         <img className='m-2 opacity-100 hover:animate-spin' width="37" src="./instagram-round-color-icon.svg"/>
       </a>
       <FacebookShareButton
-        url={'https://fish-creek.azurewebsites.net'}
+        url={'https://fish-creek.azurewebsites.net/#gallery'}
         quote={title}
         hashtag={'#cityhiker #fishcreek'}
       >

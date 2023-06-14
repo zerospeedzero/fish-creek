@@ -217,7 +217,10 @@ const Map = () => {
     buttonUI.style.textAlign = "center";
     buttonUI.style.width = "100%";
     buttonUI.style.padding = "4px 14px";
-    buttonUI.addEventListener("click", () => {setKmllayer("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml")}); 
+    // buttonUI.addEventListener("click", () => {setKmllayer("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml")}); 
+    // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/fish_creek/Fish_Creek.kml")}); 
+    buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/fish_creek/FC.kml")}); 
+    // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/votier-s-flats-riverside-16511.kml")}); 
     buttonDiv.appendChild(buttonUI); 
 
 
@@ -262,18 +265,12 @@ const Map = () => {
   }
 
   return (
-    <motion.div id="mapContainer" className='w-full overflow-hidden'
+    <motion.div id="mapContainer" className='w-full overflow-hidden flex flex-row'
         initial={{scaleX: 0.27, scaleY: widthHeightRatio() * 0.27 * 1.15 , borderRadius: '50%'}}
         whileInView={{scaleX: 1, scaleY: 1, borderRadius: '0%'}}
         transition={{ ease: "easeOut", duration: 1.5, delay: 1 }}
         onAnimationStart={mapAnimationStart}
     >
-      {locating && (
-        <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[2] flex justify-center items-center' >
-          <svg className="bg-white animate-spin h-5 w-5 mr-3" viewBox="0 0 36 36">
-          </svg>
-        </div>
-      )}
       <GoogleMap
         id="mapid"
         options={{mapTypeControl: false, mapTypeId: 'terrain', styles: Mapstyle, restriction: null}}

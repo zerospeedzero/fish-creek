@@ -25,11 +25,13 @@ const SliderItem = ({feed, index, gallery}) => {
   return (
     <motion.div ref={ref} animate={{x, y, rotate, scale: scale}} transition={{ ease: "easeOut", duration: 0.8 }}>
       <div className="flex">
-        <img className="w-100%" 
-          src={(process.env.NODE_ENV == 'development') ? feed.media_url : feed.media_url} 
-          alt='dummy'
-          onClick={() => {console.log('image is clicked')}}
-        />
+        <a href={feed.permalink} target="_blank">
+          <img className="w-100%" 
+            src={(process.env.NODE_ENV == 'development') ? feed.media_url : feed.media_url} 
+            alt='dummy'
+            onClick={() => {console.log('image is clicked')}}
+          />
+        </a>
         {share && clickIndex == index && 
           <div className="-ml-14 pt-3" onClick={()=>setShare(false)}>
             <SocialMedia message={feed.caption} url={feed.permalink}/>
