@@ -216,27 +216,35 @@ const Map = () => {
     controlUI.style.width = "100%";
     controlUI.style.padding = "10px 10px";
     controlUI.addEventListener("click", handleGetLocationClick);
+    controlUI.style.marginBottom = "20px";
     controlDiv.appendChild(controlUI);
+    // ControlDiv.appendChild(buttonUI); 
 
-    const buttonDiv = document.createElement("div");
-    const buttonUI = document.createElement("div");
-    buttonUI.innerHTML = "Trail 1";
-    buttonUI.style.backgroundColor = "white";
-    buttonUI.style.color = "black";
-    buttonUI.style.border = "2px solid #ccc";
-    buttonUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
-    buttonUI.style.cursor = "pointer";
-    buttonUI.style.marginBottom = "20px";
-    buttonUI.style.textAlign = "center";
-    buttonUI.style.width = "100%";
-    buttonUI.style.padding = "4px 14px";
+    // const buttonDiv = document.createElement("div");
+    // const buttonUI = document.createElement("div");
+    // buttonUI.innerHTML = "Trail 1";
+    // buttonUI.style.backgroundColor = "white";
+    // buttonUI.style.color = "black";
+    // buttonUI.style.border = "2px solid #ccc";
+    // buttonUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+    // buttonUI.style.cursor = "pointer";
+    // buttonUI.style.marginBottom = "20px";
+    // buttonUI.style.textAlign = "center";
+    // buttonUI.style.width = "100%";
+    // buttonUI.style.padding = "4px 14px";
+    // buttonDiv.style.paddingBottom ='20px';
+    // buttonDiv.appendChild(buttonUI); 
 
    // Create the radio buttons
-    const options = ["Difficulty", "Outline", "Road type"];
+    const options = ["All the information","Difficulty", "Road type"];
     const container = document.createElement("div");
+    container.style.paddingBottom ='20px';
     for (let i = 0; i < options.length; i++) {
       const label = document.createElement("label");
+      label.style.fontSize = '1rem';
       const radio = document.createElement("input");
+      radio.style.paddingBottom ='20px';
+
       radio.addEventListener("change", function() {
         if (this.checked) {
           console.log("Selected value:", this.value);
@@ -252,6 +260,15 @@ const Map = () => {
       container.appendChild(label);
       container.appendChild(document.createElement("br"));
     }
+    const titleDiv = document.createElement("div");
+    const titleUI = document.createElement("img");
+    titleDiv.style.paddingBottom ='20px';
+    titleDiv.appendChild(titleUI);
+    titleUI.setAttribute('src', 'http://dev.saitnewmedia.ca/~gcheng/fish_creek/title.svg');
+    titleUI.setAttribute('alt', 'na');
+    // titleUI.setAttribute('height', '10rem');
+    titleUI.setAttribute('width', '200rem');
+
     // Access the selected value
     // const radioButtons = document.getElementsByName("selection");
     // for (let i = 0; i < radioButtons.length; i++) {
@@ -269,7 +286,7 @@ const Map = () => {
     // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/fish_creek/Fish_Creek.kml")}); 
     // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/fish_creek/FC.kml")}); 
     // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/votier-s-flats-riverside-16511.kml")}); 
-    buttonDiv.appendChild(buttonUI); 
+    // buttonDiv.appendChild(buttonUI); 
 
 
 
@@ -279,8 +296,8 @@ const Map = () => {
     //   10
     // );
 
-    map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
-    // map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(buttonDiv);
+    map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(titleDiv);
+    map.controls[window.google.maps.ControlPosition.BOTTOM_CENTER].push(controlDiv);
     map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(container);
   };
   const onUnmount = () => {
@@ -353,7 +370,7 @@ const Map = () => {
           </MarkerF>
         ))
         }
-        { mapType == 'Outline' && (<GroundOverlayF
+        { mapType == 'Alltheinformation' && (<GroundOverlayF
           key={'url'}
           url={'http://dev.saitnewmedia.ca/~gcheng/fish_creek/' + mapType + '.svg'}
           bounds={votierFalats.latLngBounds}
