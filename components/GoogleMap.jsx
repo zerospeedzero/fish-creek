@@ -264,7 +264,8 @@ const Map = () => {
     const titleUI = document.createElement("img");
     titleDiv.style.paddingBottom ='20px';
     titleDiv.appendChild(titleUI);
-    titleUI.setAttribute('src', 'http://dev.saitnewmedia.ca/~gcheng/fish_creek/title.svg');
+    // titleUI.setAttribute('src', 'http://dev.saitnewmedia.ca/~gcheng/fish_creek/title.svg');
+    titleUI.setAttribute('src', '/title.svg');
     titleUI.setAttribute('alt', 'na');
     // titleUI.setAttribute('height', '10rem');
     titleUI.setAttribute('width', '200rem');
@@ -372,19 +373,19 @@ const Map = () => {
         }
         { mapType == 'Alltheinformation' && (<GroundOverlayF
           key={'url'}
-          url={'http://dev.saitnewmedia.ca/~gcheng/fish_creek/' + mapType + '.svg'}
+          url={'https://fish-creek.azurewebsites.net/' + mapType + '.svg'}
           bounds={votierFalats.latLngBounds}
         />)
         }
         { mapType == 'Difficulty' && (<GroundOverlayF
           key={'url'}
-          url={'http://dev.saitnewmedia.ca/~gcheng/fish_creek/' + mapType + '.svg'}
+          url={'https://fish-creek.azurewebsites.net/' + mapType + '.svg'}
           bounds={votierFalats.latLngBounds}
         />)
         }
         { mapType == 'Roadtype' && (<GroundOverlayF
           key={'url'}
-          url={'http://dev.saitnewmedia.ca/~gcheng/fish_creek/' + mapType + '.svg'}
+          url={'https://fish-creek.azurewebsites.net/' + mapType + '.svg'}
           bounds={votierFalats.latLngBounds}
         />)
         }
