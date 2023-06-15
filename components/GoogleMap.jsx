@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { GoogleMap, KmlLayer, useLoadScript, useGoogleMap, StreetViewPanorama, InfoWindow, onLoad, MarkerF, InfoWindowF, Autocomplete, Polyline} from "@react-google-maps/api";
+import { GoogleMap, GroundOverlayF, useLoadScript, useGoogleMap, StreetViewPanorama, InfoWindow, onLoad, MarkerF, InfoWindowF, Autocomplete, Polyline} from "@react-google-maps/api";
 import {MarkerData} from './MarkerData.js';
 // import {TrailData} from './TrailData.js';
 import {Mapstyle} from './Mapstyle2.js';
@@ -64,6 +64,18 @@ const votierFalats = {
   strictBounds: false,
 }
 
+const bounds = {
+  north: 40.773941,
+  south: 40.712216,
+  east: -74.12544,
+  west: -74.22655
+};
+
+const onClick = () => {
+  console.info('I have been clicked!')
+};
+
+
 const Map = () => {
   const mapid = useRef(null);
   const center = { lat:50.9289515, lng: -114.099215 };
@@ -82,6 +94,7 @@ const Map = () => {
   const [locating, setLocating] = useState(null);
   const [streetCenter, setStreetCenter] = useState(center);
   const [streetVisable, setStreetVisable] = useState(false);
+  const [mapType, setMapType] = useState('Outline');
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
@@ -217,9 +230,44 @@ const Map = () => {
     buttonUI.style.textAlign = "center";
     buttonUI.style.width = "100%";
     buttonUI.style.padding = "4px 14px";
+
+   // Create the radio buttons
+    const options = ["Difficulty", "Outline", "Road type"];
+    const container = document.createElement("div");
+    for (let i = 0; i < options.length; i++) {
+      const label = document.createElement("label");
+      const radio = document.createElement("input");
+      radio.addEventListener("change", function() {
+        if (this.checked) {
+          console.log("Selected value:", this.value);
+          setMapType(this.value.replace(/\s/g,''));
+          console.log("Selected value:", this.value.replace(/\s/g,''));
+        }
+      });      
+      radio.type = "radio";
+      radio.name = "selection";
+      radio.value = options[i];
+      label.appendChild(radio);
+      label.appendChild(document.createTextNode(options[i]));
+      container.appendChild(label);
+      container.appendChild(document.createElement("br"));
+    }
+    // Access the selected value
+    // const radioButtons = document.getElementsByName("selection");
+    // for (let i = 0; i < radioButtons.length; i++) {
+    //   radioButtons[i].addEventListener("change", function() {
+    //     if (this.checked) {
+    //       console.log("Selected value:", this.value);
+    //       setMapType(this.value.replace(/\s/g,''));
+    //     }
+    //   });
+    // }
+
+
+
     // buttonUI.addEventListener("click", () => {setKmllayer("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml")}); 
     // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/fish_creek/Fish_Creek.kml")}); 
-    buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/fish_creek/FC.kml")}); 
+    // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/fish_creek/FC.kml")}); 
     // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/votier-s-flats-riverside-16511.kml")}); 
     buttonDiv.appendChild(buttonUI); 
 
@@ -231,12 +279,9 @@ const Map = () => {
     //   10
     // );
 
-    map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(
-      controlDiv
-    );
-    map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(
-      buttonDiv
-    );
+    map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
+    // map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(buttonDiv);
+    map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(container);
   };
   const onUnmount = () => {
     setMap(null);
@@ -281,7 +326,7 @@ const Map = () => {
         onLoad={onMapLoad}
         onUnmount={onUnmount}
         onClick={() => {setActiveMarker(null);}}
-        onDblClick={(event) => showStreetPanorama(event)}
+        onDblClick={(event) => {console.log('showStreet before called');showStreetPanorama(event);}}
       >
         {selectedPlace && <MarkerF position={searchLngLat} />}
         {currentLocation && <MarkerF position={currentLocation} onLoad={currentLocationLoad} animation={1}/>}
@@ -308,9 +353,25 @@ const Map = () => {
           </MarkerF>
         ))
         }
-        { kmllayer && 
-          <KmlLayer url={kmllayer}/>
+        { mapType == 'Outline' && (<GroundOverlayF
+          key={'url'}
+          url={'http://dev.saitnewmedia.ca/~gcheng/fish_creek/' + mapType + '.svg'}
+          bounds={votierFalats.latLngBounds}
+        />)
         }
+        { mapType == 'Difficulty' && (<GroundOverlayF
+          key={'url'}
+          url={'http://dev.saitnewmedia.ca/~gcheng/fish_creek/' + mapType + '.svg'}
+          bounds={votierFalats.latLngBounds}
+        />)
+        }
+        { mapType == 'Roadtype' && (<GroundOverlayF
+          key={'url'}
+          url={'http://dev.saitnewmedia.ca/~gcheng/fish_creek/' + mapType + '.svg'}
+          bounds={votierFalats.latLngBounds}
+        />)
+        }
+
       </GoogleMap>
     </motion.div>
   );
