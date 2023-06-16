@@ -1,18 +1,18 @@
 export const MarkerData = [
   {
-    position: {lat: 50.93228581861665, lng: -114.11252257776783} ,
-    name: 'position 1',
-    description: 'position 1 description',
+    position: {lat:  50.933722027336096, lng:  -114.08462126102336 } ,
+    name: 'Parking',
+    description: 'Parking. It is the official starting and ending point for Fish Creek Votier Flats Trail.',
     category: 'stunning_view',
-    iconid: '0',
+    iconid: '7',
     picture: './ig-img-1.jpeg', 
   },
   {
-    position: {lat: 50.92476700298161, lng: -114.10363814201844} ,
-    name: 'position 2',
-    description: 'position 2 description',
+    position: {lat: 50.92995480462546, lng:  -114.11547739481257},
+    name: 'Restroom',
+    description: 'Public restroom with bathroom',
     category: 'stunning_view',
-    iconid: '1',
+    iconid: '0',
     picture: './ig-img-1.jpeg', 
   },
   {
@@ -28,7 +28,7 @@ export const MarkerData = [
     name: 'position 4',
     description: 'position 4 description',
     category: 'stunning_view',
-    iconid: '0',
+    iconid: '3',
     picture: './ig-img-1.jpeg', 
   }
 ];

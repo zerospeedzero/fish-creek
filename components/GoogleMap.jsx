@@ -161,12 +161,14 @@ const Map = () => {
   }
 
   const images = [
-    {
-      url: './marker1.png',
-      scale: 1,
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 32),
-    }
+    {url: './restroom.png',scale: 1,origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(0, 32)},
+    {url: './me.png',scale: 1,origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(0, 32)},
+    {url: './bird.png',scale: 1,origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(0, 32)},
+    {url: './besttime.png',scale: 1,origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(0, 32)},
+    {url: './lookout.png',scale: 1,origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(0, 32)},
+    {url: './accessibility.png',scale: 1,origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(0, 32)},
+    {url: './weather.png',scale: 1,origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(0, 32)},
+    {url: './parking.png',scale: 1,origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(0, 32)}
   ]
 
 
@@ -349,11 +351,11 @@ const Map = () => {
           >
             {index == activeMarker && 
               <InfoWindowF>
-                <div className=''>
+                <div className='max-w-100'>
                   <h3 className='text-black text-lg'>{marker.name}</h3>
                   <figure>
-                    <img width='300' src={marker.picture} alt='testing'/>
-                    <figcaption className="text-black">{marker.description}</figcaption>
+                    <img width='100%' src={marker.picture} alt='testing'/>
+                    <figcaption className="text-black text-md pt-4 pb-4">{marker.description}</figcaption>
                   </figure>
                 </div>
               </InfoWindowF>
