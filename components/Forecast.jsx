@@ -54,7 +54,6 @@ const WeatherForecast = () => {
             {items.map((item) => (
               <div key={item.dt} className="forecast-item p-2 bg-white/80 text-black border border-gray-300 rounded hover:animate-bounce">
                 <div className="time text-sm font-semibold">
-                  {*/new Date(item.dt_txt).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' })*/}
                   {new Date(item.dt_txt).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                 </div>
                 <div className="temperature text-lg font-semibold">
