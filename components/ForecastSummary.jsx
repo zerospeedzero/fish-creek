@@ -12,7 +12,7 @@ const ForecastSummary = () => {
         const data = await response.json();
         // Extract the next 5 days forecast from the API response
         // const forecastData = data.list.slice(0, 35);
-        const resultData = data.list.slice(0,24);
+        const resultData = data.list.slice(0,35);
         let forecastInfo = [];
         resultData.forEach((dateItem, index) => {
           if (dateItem.dt_txt.includes('09:00:00')) {
@@ -48,20 +48,21 @@ const ForecastSummary = () => {
 
   return (
     <div className='flex flex-col justify-between'>
-      <h3 className="text-center text-3xl pb-5">Weather forecast</h3>
+      <h3 className="text-center text-3xl pb-5">5 days forecast</h3>
       <div className="flex z-[2]">
         {Object.entries(groupedForecast).map(([date, items],index) => (
             <div key={index} className="flex flex-wrap justify-start p-2">
               {items.map((item) => (
                 <div key={item.dt} className="p-2 bg-white/80 text-black border border-gray-300 rounded hover:animate-bounce">
-                  <div className="time text-sm font-semibold">
-                    {new Date(item.dt_txt).toLocaleTimeString('en-US', { month: 'long', day: 'numeric' })}
+                  <div className="time text-xs font-semibold">
+                    {/*new Date(item.dt_txt).toLocaleTimeString('en-US', { month: 'long', day: 'numeric' })*/}
+                    {new Date(item.dt_txt).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                   </div>
                   <div className="temperature text-lg font-semibold">
                     {Math.round(item.main.temp)}°C
                   </div>
                   <div className="weather-icon">
-                    <Image width={100} height={50} src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt="Weather Icon" />
+                    <Image width={60} height={50} src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt="Weather Icon" />
                   </div>
                 </div>
               ))}

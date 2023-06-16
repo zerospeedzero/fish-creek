@@ -40,7 +40,7 @@ const SliderItem = ({feed, index, gallery}) => {
       </div>
       <div className="flex bg-black/70 -mb-1 text-center items-center text-white h-12 justify-between p-4">
         <p className='text-white'>{feed.caption == null ? "Awesome!!": feed.caption}</p>
-        <img className="hover:bg-white/20" src="./share.svg" alt="share" onClick={()=>{setShare(!share); setClickIndex(index);}}/>
+        <motion.img className="hover:scale-150" src="./share.svg" alt="share" onClick={()=>{setShare(!share); setClickIndex(index);}}/>
       </div>
     </motion.div>
   )
