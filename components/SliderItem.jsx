@@ -24,7 +24,7 @@ const SliderItem = ({feed, index, gallery}) => {
   })
   return (
     <motion.div ref={ref} animate={{x, y, rotate, scale: scale}} transition={{ ease: "easeOut", duration: 0.8 }}>
-      <div className="flex">
+      <div className="flex ">
         <a href={feed.permalink} target="_blank">
           <img className="w-100%" 
             src={(process.env.NODE_ENV == 'development') ? feed.media_url : feed.media_url} 
