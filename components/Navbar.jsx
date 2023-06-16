@@ -60,19 +60,19 @@ const Navbar = () => {
         : 'sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300'}> 
           <ul>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='./' onClick={() => {handleNav;changePath('/home')}}>Home</Link>
+              <Link href='./' onClick={() => {handleNav();changePath('/home')}}>Home</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='./#gallery' scroll={false} onClick={() => {handleNav;changePath('/gallery')}}>Gallery</Link>
+              <Link href='./#gallery' scroll={false} onClick={() => {handleNav();changePath('/gallery')}}>Gallery</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='./#map' scroll={false} onClick={() => {handleNav;changePath('/map')}} >Map</Link>
+              <Link href='./#map' scroll={false} onClick={() => {handleNav();changePath('/map')}} >Map</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='./#trails' scroll={false} onClick={() => {handleNav;changePath('/trails')}} >Trails</Link>
+              <Link href='./#trails' scroll={false} onClick={() => {handleNav();changePath('/trails')}} >Trails</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='./#contact' scroll={false} onClick={() => {handleNav;changePath('/contact')}}>Contact</Link>
+              <Link href='./#contact' scroll={false} onClick={() => {handleNav();changePath('/contact')}}>Contact</Link>
             </li>
           </ul>
         </div>

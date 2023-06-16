@@ -153,21 +153,6 @@ const Map = () => {
   const handleGetLocationClick = () => {
     setLocating('1');
     setCurrentLocation({lat:50.9289515, lng: -114.099215});
-    // if (navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition(
-    //     (position) => {
-    //       const { latitude, longitude } = position.coords;
-    //       setSelectedPlace(null);
-    //       setSearchLngLat(null);
-    //       setCurrentLocation({ lat: latitude, lng: longitude });
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //     }
-    //   );
-    // } else {
-    //   console.log("Geolocation is not supported by this browser.");
-    // }
     setLocating(null);
   };
 
@@ -242,8 +227,11 @@ const Map = () => {
     for (let i = 0; i < options.length; i++) {
       const label = document.createElement("label");
       label.style.fontSize = '1rem';
+      label.style.color = 'black';
       const radio = document.createElement("input");
-      radio.style.paddingBottom ='20px';
+      radio.style.paddingBottom ='2rem';
+      radio.style.paddingRight ='4rem';
+
 
       radio.addEventListener("change", function() {
         if (this.checked) {
@@ -260,15 +248,17 @@ const Map = () => {
       container.appendChild(label);
       container.appendChild(document.createElement("br"));
     }
+
     const titleDiv = document.createElement("div");
     const titleUI = document.createElement("img");
     titleDiv.style.paddingBottom ='20px';
     titleDiv.appendChild(titleUI);
+    
     // titleUI.setAttribute('src', 'http://dev.saitnewmedia.ca/~gcheng/fish_creek/title.svg');
     titleUI.setAttribute('src', '/title.svg');
     titleUI.setAttribute('alt', 'na');
     // titleUI.setAttribute('height', '10rem');
-    titleUI.setAttribute('width', '200rem');
+    titleUI.setAttribute('width', '300rem');
 
     // Access the selected value
     // const radioButtons = document.getElementsByName("selection");
