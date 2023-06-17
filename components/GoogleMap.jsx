@@ -95,6 +95,7 @@ const Map = () => {
   const [streetCenter, setStreetCenter] = useState(center);
   const [streetVisable, setStreetVisable] = useState(false);
   const [mapType, setMapType] = useState('Outline');
+  const [showMarker, setShowMarker] = useState(false);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
@@ -123,7 +124,7 @@ const Map = () => {
   }
 
   const markerAnimation = (index) => {
-    return index == activeMarker ? 1 : 2
+    return index == activeMarker ? 1 : 3
   }
 
   // handle place change on search
@@ -205,22 +206,6 @@ const Map = () => {
     controlUI.addEventListener("click", handleGetLocationClick);
     controlUI.style.marginBottom = "20px";
     controlDiv.appendChild(controlUI);
-    // ControlDiv.appendChild(buttonUI); 
-
-    // const buttonDiv = document.createElement("div");
-    // const buttonUI = document.createElement("div");
-    // buttonUI.innerHTML = "Trail 1";
-    // buttonUI.style.backgroundColor = "white";
-    // buttonUI.style.color = "black";
-    // buttonUI.style.border = "2px solid #ccc";
-    // buttonUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
-    // buttonUI.style.cursor = "pointer";
-    // buttonUI.style.marginBottom = "20px";
-    // buttonUI.style.textAlign = "center";
-    // buttonUI.style.width = "100%";
-    // buttonUI.style.padding = "4px 14px";
-    // buttonDiv.style.paddingBottom ='20px';
-    // buttonDiv.appendChild(buttonUI); 
 
    // Create the radio buttons
     const options = ["All the information","Difficulty", "Road type"];
@@ -262,33 +247,6 @@ const Map = () => {
     // titleUI.setAttribute('height', '10rem');
     titleUI.setAttribute('width', '300rem');
 
-    // Access the selected value
-    // const radioButtons = document.getElementsByName("selection");
-    // for (let i = 0; i < radioButtons.length; i++) {
-    //   radioButtons[i].addEventListener("change", function() {
-    //     if (this.checked) {
-    //       console.log("Selected value:", this.value);
-    //       setMapType(this.value.replace(/\s/g,''));
-    //     }
-    //   });
-    // }
-
-
-
-    // buttonUI.addEventListener("click", () => {setKmllayer("https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml")}); 
-    // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/fish_creek/Fish_Creek.kml")}); 
-    // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/fish_creek/FC.kml")}); 
-    // buttonUI.addEventListener("click", () => {setKmllayer("https://dev.saitnewmedia.ca/~gcheng/votier-s-flats-riverside-16511.kml")}); 
-    // buttonDiv.appendChild(buttonUI); 
-
-
-
-    // const centerControl = new window.google.maps.ControlPosition(
-    //   window.google.maps.ControlPosition.TOP_CENTER,
-    //   0,
-    //   10
-    // );
-
     map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(titleDiv);
     map.controls[window.google.maps.ControlPosition.BOTTOM_CENTER].push(controlDiv);
     map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(container);
@@ -305,6 +263,7 @@ const Map = () => {
   }
 
   const mapAnimationStart = () => {
+    setShowMarker(false);
     map.setZoom(4);
     // setTimeout(()=>{map.setZoom(15)}, 5000);
     for (let i = 4; i < 16; i++) {
@@ -319,12 +278,19 @@ const Map = () => {
     }
   }
 
+    const mapAnimationComplete = () => {
+      setShowMarker(true);
+      // map.setRestriction(votierFalats); 
+      console.log('end is called');
+  }
+
   return (
     <motion.div id="mapContainer" className='w-full overflow-hidden flex flex-row'
         initial={{scaleX: 0.27, scaleY: widthHeightRatio() * 0.27 * 1.15 , borderRadius: '50%'}}
         whileInView={{scaleX: 1, scaleY: 1, borderRadius: '0%'}}
         transition={{ ease: "easeOut", duration: 1.5, delay: 1 }}
         onAnimationStart={mapAnimationStart}
+        onAnimationComplete={mapAnimationComplete}
     >
       <GoogleMap
         id="mapid"
@@ -335,12 +301,12 @@ const Map = () => {
         mapContainerStyle={{ width: "100%", height: "calc(100vh - 150px)", margin: "auto" }}
         onLoad={onMapLoad}
         onUnmount={onUnmount}
-        onClick={() => {setActiveMarker(null);}}
+        onClick={() => {setActiveMarker(null);map.setRestriction(votierFalats);}}
         onDblClick={(event) => {console.log('showStreet before called');showStreetPanorama(event);}}
       >
         {selectedPlace && <MarkerF position={searchLngLat} />}
         {currentLocation && <MarkerF position={currentLocation} onLoad={currentLocationLoad} animation={1}/>}
-        {MarkerData.map((marker, index) => (
+        {showMarker && MarkerData.map((marker, index) => (
           <MarkerF
             key={index}
             onLoad={onMarkerLoad}
@@ -350,7 +316,7 @@ const Map = () => {
             onClick={() => {setActiveMarker(index);return; handleActiveMarker(event, index); test(this)}}
           >
             {index == activeMarker && 
-              <InfoWindowF>
+              <InfoWindowF onCloseClick={()=>{ map.setRestriction(votierFalats);}}>
                 <div className='max-w-100'>
                   <h3 className='text-black text-lg'>{marker.name}</h3>
                   <figure>
@@ -367,6 +333,7 @@ const Map = () => {
           key={'url'}
           url={'https://fish-creek.azurewebsites.net/' + mapType + '.svg'}
           bounds={votierFalats.latLngBounds}
+          onDbClick={()=>{showStreetPanorama(event)}}
         />)
         }
         { mapType == 'Difficulty' && (<GroundOverlayF

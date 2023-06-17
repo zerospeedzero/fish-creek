@@ -21,9 +21,8 @@ const Footer = () => {
           <p className="text-sm"><a href="https://github.com/DevPanther/better-react-carousel">better-react-carousel</a></p>
           <p className="text-sm"><a href="https://github.com/JustFly1984/react-google-maps-api">react-google-maps</a></p>
           <p className="text-sm"><a href="https://github.com/tailwindlabs">Tailwind</a></p>
+          <p className="text-sm"><a href="https://github.com/framer/motion">Framer motion</a></p>
         </div>
-        <p><a href='./policy#privacy'>Privacy Policy</a></p>
-        <p><a href='./policy#term'>Terms of Service</a></p>
       </div>
     </footer>
   );

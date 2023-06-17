@@ -8,9 +8,6 @@ const SocialMedia = ({message, url}) => {
   const postUrl = (url == '') ? 'https://www.instagram.com' : url;
   return (
     <div className='text-white cursor-pointer z-[2] flex flex-col justify-center'>
-      {/*<a href={postUrl} target="_blank" aria-label="Instagram" className='bg-transparent border-none p-0' >
-        <img className='m-2 opacity-100 hover:scale-150' width="40" src="./instagram-round-color-icon.svg"/>
-      </a>*/}
       <FacebookShareButton
         url={'https://fish-creek.azurewebsites.net/#gallery'}
         quote={title}
