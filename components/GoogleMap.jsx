@@ -174,7 +174,6 @@ const Map = () => {
 
 
   const handleActiveMarker = (event, marker) => {
-    console.log(event);
     if (marker == activeMarker) {
       return;
     }
@@ -222,9 +221,7 @@ const Map = () => {
 
       radio.addEventListener("change", function() {
         if (this.checked) {
-          console.log("Selected value:", this.value);
           setMapType(this.value.replace(/\s/g,''));
-          console.log("Selected value:", this.value.replace(/\s/g,''));
         }
       });      
       radio.type = "radio";
@@ -278,10 +275,8 @@ const Map = () => {
     }
   }
 
-    const mapAnimationComplete = () => {
-      setShowMarker(true);
-      // map.setRestriction(votierFalats); 
-      console.log('end is called');
+  const mapAnimationComplete = () => {
+    setShowMarker(true);
   }
 
   return (

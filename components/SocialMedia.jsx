@@ -13,7 +13,7 @@ const SocialMedia = ({message, url}) => {
         url={'https://fish-creek.azurewebsites.net/#gallery'}
         quote={title}
         hashtag={'#cityhiker #fishcreek'}
-        onClick={()=>{console.log('facebook is called');gtag.event('share', 'Social Media', 'Platform', 'Facebook')}}
+        onClick={()=>{gtag.event('share', 'Social Media', 'Platform', 'Facebook')}}
       >
         <FacebookIcon size={40} round className='m-2 opacity-100 hover:scale-150'/>
       </FacebookShareButton>

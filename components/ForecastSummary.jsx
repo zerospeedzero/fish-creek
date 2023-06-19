@@ -19,7 +19,6 @@ const ForecastSummary = () => {
             forecastInfo.push(dateItem);
           }
         })
-        console.log(forecastInfo)
         // setForecast(forecastData);
         setForecast(forecastInfo);
       } catch (error) {
