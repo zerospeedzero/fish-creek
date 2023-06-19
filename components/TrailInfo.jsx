@@ -24,13 +24,10 @@ const TrailInfo = () => {
           <div className="bg-black/10 p-4">
             <div className="mb-4">
               <h2 className="text-lg font-bold">Trail Information</h2>
-              <ul className="list-disc list-inside ml-4">
-                <li>{trail.trailInformation.description}</li>
-                <li>{trail.trailInformation.duration}</li>
-                <li>{trail.trailInformation.activities.join(', ')}</li>
-                <li>{trail.trailInformation.dogFriendly ? 'Dog friendly' : 'Not dog friendly'}</li>
-                <li>{trail.trailInformation.paved ? 'Partially paved' : 'Not paved'}</li>
-              </ul>
+              <p className="p-4">Welcome to the Votier Flats Hiking Trail in Fish Creek Park, Calgary, Alberta! Start your journey through the city's largest urban park as you explore this picturesque trail. The Votier Flats Trail offers a captivating experience for outdoor enthusiasts of all ages and levels of experience.</p>
+              <p className="p-4">Spanning 9 kilometers and an average of 2 hours and 16 minutes to complete, the Votier Flats trail offers the perfect destination to explore the city's nature and wildlife. This trail provides a tranquil escape from the busyness of Calgary’s city life, allowing you to immerse yourself in the natural beauty that surrounds us.</p>
+              <p className="p-4">The Votier Flats Hiking Trail caters to a range of skill levels, making it a great place for frequent hikers as well as beginners looking to get outdoors. Some of the fauna you may encounter on this trail include (but are not limited to): Asters, Cow Parsnip, Bluebells etc. and you might even be able to get a look at some of the wildlife as well. Animals that have been encountered on this trail by fellow hikers include the wood frog, the yellow warbler, and even deer!</p>
+              <p className="p-4">Whether you're seeking a peaceful solo hike or an outing with a few friends/ family, the Votier Flats trail is able to accommodate your needs. The trail is partially paved and well maintained, dog-friendly and is a great spot for bird-watching, hiking and biking! Grab your hiking boots and your camera and prepare to create lasting memories on the Votier Flats Hiking Trail!</p>
             </div>
             <div className="mb-4">
               <h2 className="text-lg font-bold">Wildlife</h2>
@@ -82,7 +79,7 @@ const TrailInfo = () => {
               whileInView={{opacity:1, translateX:0, translateY: 0}}
               transition={{duration:0.5, delay: 0.3}}
             >
-              <img src={flower.image} alt={flower.name} className="w-48 h-48 aspect-square mr-4" />
+              <img src={flower.image} alt={flower.name} className="w-48 h-48 object-none aspect-square object-center mr-4" />
               <figcaption>{flower.description}</figcaption>
             </motion.figure>
           ))}
