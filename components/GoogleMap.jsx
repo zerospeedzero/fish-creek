@@ -311,8 +311,10 @@ const Map = () => {
             onClick={() => {setActiveMarker(index);return; handleActiveMarker(event, index); test(this)}}
           >
             {index == activeMarker && 
-              <InfoWindowF onCloseClick={()=>{ map.setRestriction(votierFalats);}}>
-                <div className='max-w-100'>
+              <InfoWindowF onCloseClick={()=>{ map.setRestriction(votierFalats);}}
+                 position={marker.position}
+              >
+                <div className='max-w-md'>
                   <h3 className='text-black text-lg'>{marker.name}</h3>
                   <figure>
                     <img width='100%' src={marker.picture} alt='testing'/>

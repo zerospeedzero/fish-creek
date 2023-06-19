@@ -3,8 +3,8 @@ import IgImg1 from '../public/ig-img-1.png';
 import IgImg2 from '../public/ig-img-2.png';
 import IgImg3 from '../public/ig-img-3.png';
 import IgImg4 from '../public/ig-img-4.png';
-import IgImg5 from '../public/ig-img-5.jpeg';
-import IgImg6 from '../public/ig-img-6.jpeg';
+import IgImg5 from '../public/ig-img-5.png';
+import IgImg6 from '../public/ig-img-6.png';
 import InstagramImg from './InstagramImg';
 
 
@@ -18,8 +18,8 @@ const Instagram = () => {
             <InstagramImg socialImg={IgImg2} link='https://www.instagram.com/catherineexx_/'/>
             <InstagramImg socialImg={IgImg3} link='https://www.instagram.com/kiirstenve/'/>
             <InstagramImg socialImg={IgImg4} link='https://www.instagram.com/zerospeedzero/'/>
-            <InstagramImg socialImg={IgImg5} link='https://www.instagram.com/'/>
-            <InstagramImg socialImg={IgImg6} link='https://www.instagram.com/'/>
+            <InstagramImg socialImg={IgImg5} link='https://www.instagram.com/yang_celine/'/>
+            <InstagramImg socialImg={IgImg6} link='https://instagram.com/slo_laura?igshid=OGQ5ZDc2ODk2ZA=='/>
         </div>
     </div>
   )
