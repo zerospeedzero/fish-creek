@@ -210,7 +210,7 @@ const Map = () => {
    // Create the radio buttons
     const options = ["All the information","Difficulty", "Road type"];
     const container = document.createElement("div");
-    container.style.paddingBottom ='20px';
+    container.style.padding ='20px';
     for (let i = 0; i < options.length; i++) {
       const label = document.createElement("label");
       label.style.fontSize = '1rem';
@@ -237,6 +237,7 @@ const Map = () => {
     const titleDiv = document.createElement("div");
     const titleUI = document.createElement("img");
     titleDiv.style.paddingBottom ='20px';
+    titleDiv.style.zIndex ='0';
     titleDiv.className = 'max-sm:hidden';
     titleDiv.appendChild(titleUI);
     
@@ -246,9 +247,9 @@ const Map = () => {
     // titleUI.setAttribute('height', '10rem');
     titleUI.setAttribute('width', '300rem');
 
-    map.controls[window.google.maps.ControlPosition.BOTTOM_RIGHT].push(titleDiv);
-    map.controls[window.google.maps.ControlPosition.BOTTOM_CENTER].push(controlDiv);
-    map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(container);
+    map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(titleDiv);
+    map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
+    map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(container);
   };
   const onUnmount = () => {
     setMap(null);
@@ -316,7 +317,7 @@ const Map = () => {
               <InfoWindowF onCloseClick={()=>{ map.setRestriction(votierFalats);}}
                  position={marker.position}
               >
-                <div className='max-w-md'>
+                <div className='max-w-md z-10'>
                   <h3 className='text-black text-lg'>{marker.name}</h3>
                   <figure>
                     <img width='100%' src={marker.picture} alt='testing'/>
@@ -347,7 +348,6 @@ const Map = () => {
           bounds={votierFalats.latLngBounds}
         />)
         }
-
       </GoogleMap>
     </motion.div>
   );
