@@ -22,6 +22,7 @@ const Footer = () => {
           <p className="text-sm"><a href="https://github.com/JustFly1984/react-google-maps-api">react-google-maps</a></p>
           <p className="text-sm"><a href="https://github.com/tailwindlabs">Tailwind</a></p>
           <p className="text-sm"><a href="https://github.com/framer/motion">Framer motion</a></p>
+          <p className="text-sm"><a href="./policy">Policy</a></p>
         </div>
       </div>
     </footer>

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon } from 'next-share';
+import * as gtag from "../lib/gtag";
 
 const SocialMedia = ({message, url}) => {
   const title = (message == '') ? 'Get more information about Fish Creek from City Hiker offiical web site.' : message;
@@ -12,6 +13,7 @@ const SocialMedia = ({message, url}) => {
         url={'https://fish-creek.azurewebsites.net/#gallery'}
         quote={title}
         hashtag={'#cityhiker #fishcreek'}
+        onClick={()=>{console.log('facebook is called');gtag.event('share', 'Social Media', 'Platform', 'Facebook')}}
       >
         <FacebookIcon size={40} round className='m-2 opacity-100 hover:scale-150'/>
       </FacebookShareButton>

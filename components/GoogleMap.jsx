@@ -333,7 +333,7 @@ const Map = () => {
           key={'url'}
           url={'https://fish-creek.azurewebsites.net/' + mapType + '.svg'}
           bounds={votierFalats.latLngBounds}
-          onDbClick={()=>{showStreetPanorama(event)}}
+          onClick={console.log('all overlay is clicked')}
         />)
         }
         { mapType == 'Difficulty' && (<GroundOverlayF
