@@ -28,7 +28,7 @@ export const MarkerData = [
     name: 'Muddy roots small trail',
     description: 'This small trail is full of different types of flowers. It is a beautiful place for flower viewing. Please be aware of your steps while watching those flowers, the roots might get you stumble.',
     category: 'stunning_view',
-    iconid: '3',
+    iconid: '4',
     picture: './sl2.jpg', 
   },
   {

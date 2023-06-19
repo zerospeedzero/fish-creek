@@ -124,7 +124,8 @@ const Map = () => {
   }
 
   const markerAnimation = (index) => {
-    return index == activeMarker ? 1 : 3
+    // return index == activeMarker ? 1 : 3
+    return 2;
   }
 
   // handle place change on search
@@ -236,6 +237,7 @@ const Map = () => {
     const titleDiv = document.createElement("div");
     const titleUI = document.createElement("img");
     titleDiv.style.paddingBottom ='20px';
+    titleDiv.className = 'max-sm:hidden';
     titleDiv.appendChild(titleUI);
     
     // titleUI.setAttribute('src', 'http://dev.saitnewmedia.ca/~gcheng/fish_creek/title.svg');
@@ -244,7 +246,7 @@ const Map = () => {
     // titleUI.setAttribute('height', '10rem');
     titleUI.setAttribute('width', '300rem');
 
-    map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(titleDiv);
+    map.controls[window.google.maps.ControlPosition.BOTTOM_RIGHT].push(titleDiv);
     map.controls[window.google.maps.ControlPosition.BOTTOM_CENTER].push(controlDiv);
     map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(container);
   };
@@ -289,7 +291,7 @@ const Map = () => {
     >
       <GoogleMap
         id="mapid"
-        options={{mapTypeControl: false, mapTypeId: 'terrain', styles: Mapstyle, restriction: null}}
+        options={{mapTypeControl: false, mapTypeId: 'terrain', styles: Mapstyle, restriction: null, keyboardShortcuts: false}}
         zoom={currentLocation || selectedPlace ? 18 : 4}
         center={currentLocation || searchLngLat || center}
         mapContainerClassName="map"
