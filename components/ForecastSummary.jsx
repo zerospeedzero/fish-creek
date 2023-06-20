@@ -12,7 +12,7 @@ const ForecastSummary = () => {
         const data = await response.json();
         // Extract the next 5 days forecast from the API response
         // const forecastData = data.list.slice(0, 35);
-        const resultData = data.list.slice(0,35);
+        const resultData = data.list.slice(0,40);
         let forecastInfo = [];
         resultData.forEach((dateItem, index) => {
           if (dateItem.dt_txt.includes('09:00:00')) {
