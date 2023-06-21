@@ -154,7 +154,7 @@ const Map = () => {
   // get current location
   const handleGetLocationClick = () => {
     setLocating('1');
-    setCurrentLocation({lat:50.9289515, lng: -114.099215});
+    setCurrentLocation({lat:50.93461180162025, lng:  -114.1028846591232});
     setLocating(null);
   };
 
