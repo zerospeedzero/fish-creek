@@ -209,7 +209,7 @@ const Map = () => {
 
    // Create the radio buttons
     const options = ["All the information","Difficulty", "Road type"];
-    const container = document.createElement("div");
+    const container = document.createElement("div"); 
     container.style.padding ='20px';
     for (let i = 0; i < options.length; i++) {
       const label = document.createElement("label");
