@@ -24,8 +24,8 @@ export default function Home() {
       </Head>
       <Hero heading='Welcome to Fish Creek' message="Hiking in Calgary City"/>
       <Slider/>
-      <Trails/>
       <Map/>
+      <Trails/>
       <Instagram/>
       <Footer/>
     </>
