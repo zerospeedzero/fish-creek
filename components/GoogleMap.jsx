@@ -208,7 +208,7 @@ const Map = () => {
     controlDiv.appendChild(controlUI);
 
    // Create the radio buttons
-    const options = ["All the information","Difficulty", "Road type"];
+    const options = ["All the information","Difficulty", "Road type", "None"];
     const container = document.createElement("div"); 
     container.style.padding ='20px';
     for (let i = 0; i < options.length; i++) {
@@ -348,6 +348,12 @@ const Map = () => {
           bounds={votierFalats.latLngBounds}
         />)
         }
+        { mapType == 'None' && (<GroundOverlayF
+          key={'url'}
+          url={'https://fish-creek.azurewebsites.net/' + mapType + '.svg'}
+          bounds={votierFalats.latLngBounds}
+        />)
+        }        
       </GoogleMap>
     </motion.div>
   );
