@@ -41,10 +41,10 @@ const Navbar = () => {
             <Link href='./#gallery' scroll={false} onClick={()=>changePath('/gallery')}>Gallery</Link>
           </li>
           <li className='p-4'>
-            <Link href='./#map' scroll={false} onClick={()=>changePath('/map')}>Map</Link>
+            <Link href='./#trails' scroll={false} onClick={()=>changePath('/trails')}>Trails</Link>
           </li>
           <li className='p-4'>
-            <Link href='./#trails' scroll={false} onClick={()=>changePath('/trails')}>Trails</Link>
+            <Link href='./#map' scroll={false} onClick={()=>changePath('/map')}>Map</Link>
           </li>
           <li className='p-4'>
             <Link href='./#contact' scroll={false} onClick={()=>changePath('/contact')}>Contact</Link>
@@ -66,10 +66,10 @@ const Navbar = () => {
               <Link href='./#gallery' scroll={false} onClick={() => {handleNav();changePath('/gallery')}}>Gallery</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='./#map' scroll={false} onClick={() => {handleNav();changePath('/map')}} >Map</Link>
+              <Link href='./#trails' scroll={false} onClick={() => {handleNav();changePath('/trails')}} >Trails</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='./#trails' scroll={false} onClick={() => {handleNav();changePath('/trails')}} >Trails</Link>
+              <Link href='./#map' scroll={false} onClick={() => {handleNav();changePath('/map')}} >Map</Link>
             </li>
             <li className='p-4 text-4xl hover:text-gray-500'>
               <Link href='./#contact' scroll={false} onClick={() => {handleNav();changePath('/contact')}}>Contact</Link>
