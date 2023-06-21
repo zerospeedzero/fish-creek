@@ -154,7 +154,23 @@ const Map = () => {
   // get current location
   const handleGetLocationClick = () => {
     setLocating('1');
-    setCurrentLocation({lat:50.93461180162025, lng:  -114.1028846591232});
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setSelectedPlace(null);
+          setSearchLngLat(null);
+          setCurrentLocation({ lat: latitude, lng: longitude });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+
+    // setCurrentLocation({lat:50.93461180162025, lng:  -114.1028846591232});
     setLocating(null);
   };
 
