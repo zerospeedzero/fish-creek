@@ -232,8 +232,6 @@ const Map = () => {
       label.style.fontSize = '1rem';
       label.style.color = 'black';
       const radio = document.createElement("input");
-      radio.style.paddingBottom ='2rem';
-      radio.style.paddingRight ='4rem';
 
 
       radio.addEventListener("change", function() {
