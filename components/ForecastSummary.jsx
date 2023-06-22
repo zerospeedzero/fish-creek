@@ -7,7 +7,8 @@ const ForecastSummary = () => {
       try {
         // Make API request to OpenWeatherMap
         const apiKey = 'YOUR_API_KEY';
-        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=fish%20creek&units=metric&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+        // const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=fish%20creek&units=metric&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=calgary&units=metric&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         // Extract the next 5 days forecast from the API response

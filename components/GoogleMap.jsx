@@ -328,7 +328,7 @@ const Map = () => {
             onClick={() => {setActiveMarker(index);return; handleActiveMarker(event, index); test(this)}}
           >
             {index == activeMarker && 
-              <InfoWindowF onCloseClick={()=>{ map.setRestriction(votierFalats);}}
+              <InfoWindowF onCloseClick={()=>{console.log('closed')}}
                  position={marker.position}
               >
                 <div className='max-w-md z-10'>
