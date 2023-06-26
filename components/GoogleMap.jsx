@@ -93,7 +93,7 @@ const Map = () => {
   const [locating, setLocating] = useState(null);
   const [streetCenter, setStreetCenter] = useState(center);
   const [streetVisable, setStreetVisable] = useState(false);
-  const [mapType, setMapType] = useState('Outline');
+  const [mapType, setMapType] = useState('None');
   const [showMarker, setShowMarker] = useState(false);
 
   const { isLoaded } = useLoadScript({
@@ -241,6 +241,7 @@ const Map = () => {
       radio.type = "radio";
       radio.name = "selection";
       radio.value = options[i];
+      if (radio.value == 'None') {radio.checked = true;}
       label.appendChild(radio);
       label.appendChild(document.createTextNode(options[i]));
       container.appendChild(label);
