@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { GoogleMap, GroundOverlayF, useLoadScript, useGoogleMap, StreetViewPanorama, InfoWindow, onLoad, MarkerF, InfoWindowF, Autocomplete, Polyline} from "@react-google-maps/api";
 import {MarkerData} from './MarkerData.js';
-// import {TrailData} from './TrailData.js';
 import {Mapstyle} from './Mapstyle2.js';
 import Image from 'next/image';
 import {motion} from 'framer-motion';
