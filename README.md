@@ -1,38 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Overview
 
-## Getting Started
+I designed and implemented an Interactive map solution in the third semester. It is a group project, and I am the one and only one who did all the program development and UX/UI design work (except the Google map marker icon). Below are the Information Technologies that have been employed in my web and software development.
 
-First, run the development server:
+1.  I did web and program development of the website for promoting Fish Creek hiking trails using cutting-edge technologies such as OpenWeather API, Instagram Personal API, Google Maps API, and social media integrations with Facebook, Instagram, WhatsApp, and LinkedIn. It intends to create an immersive experience for hiking enthusiasts.
+2.  With the integration of Next.js, my website offers lightning-fast performance and seamless navigation, ensuring users can effortlessly explore the natural beauty of Fish Creek and plan their hiking adventures with ease.
+3.  By leveraging OpenWeather's data, I provide real-time weather updates, allowing hikers to stay informed about current conditions, and ensuring a safe and enjoyable experience amidst the stunning landscapes of Fish Creek.
+4.  The integration with Instagram's Personal API allows hikers to view captivating photos and videos shared by us, inspiring hikers to embark on their own memorable journeys and fostering a vibrant hiking community.
+5.  Through the integration of Google Maps API, hikers can explore interactive maps, discover hiking trails, and access detailed directions, making it convenient for both local and international hikers to navigate and explore Fish Creek's picturesque terrain.
+6.  Additionally, the website incorporates seamless social media integration, enabling hikers to easily share their hiking experiences on Facebook, Instagram, WhatsApp, and LinkedIn, allowing hikers to connect with friends, inspire others, and spread the beauty of Fish Creek through their personal networks.
+7.  By combining these technologies and incorporating Google Analytics for measurement, the website presents Fish Creek as a must-visit destination for hiking enthusiasts, providing hikers with a comprehensive platform to plan, share, and relish their outdoor adventures in the heart of Calgary.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The website has employed technologies provided by Microsoft Azure Cloud and it follows mobile-first design best practices.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Website link:** [https://fish-creek.azurewebsites.net](https://fish-creek.azurewebsites.net)
