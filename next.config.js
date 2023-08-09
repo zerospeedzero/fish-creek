@@ -15,8 +15,8 @@ module.exports = withPWA({
 
 const nextConfig = {
   output: 'export',
-  basePath: '/out',
-  assetPrefix: "/",
+  //basePath: '/out',
+  //assetPrefix: "/",
   // basePath: '/~gcheng/fish_creek',
   // assetPrefix: '/~gcheng/fish_creek',
   // env: {

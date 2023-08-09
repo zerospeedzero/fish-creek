@@ -8,6 +8,8 @@ const InstagramImg = ({ socialImg, link }) => {
       <Image
         src={'/ig-img-' + socialImg + '.png'}
         alt='/'
+        width={100}
+        height={100}
         className='w-full h-full'
         layout='responsive'
       />
