@@ -14,7 +14,6 @@ jobs:
     env:
       NEXT_PUBLIC_GA_MEASUREMENT_ID: "G-21QYR215HP"
       NEXT_PUBLIC_GOOGLE_API_KEY: "AIzaSyAxx9oRxyX8FeZ6-lGNb9zaK4IT7SU0Dwk"
-      NEXT_PUBLIC_INSTAGRAM_KEY: "IGQVJYS0JkdEVjeFhteUYtSnBqZAWMtUlQzYWxXSGdwM1hYQXI2TGtXUnlzV2VMckZANamsybE5wQk1fbFVYYjdrMXNDd1JudS1jZA1otOUNwSlFyY25ERzR1NEpHSzhQcnpoNVBnQlVRX1BORTBiWHo4ZAgZDZD"
       NEXT_PUBLIC_WEATHER_KEY: "c6cbe8b61a789b2273f5bed64e854375"
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
