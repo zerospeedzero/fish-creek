@@ -6,26 +6,27 @@ import Carousel from 'better-react-carousel';
 import SocialMedia from './SocialMedia';
 import {motion, useScroll} from 'framer-motion';
 import SliderItem from './SliderItem';
+import SliderData from './SliderData.json';
 
 const Slider = () => {
-  const [feeds, setFeeds ] = useState([]);
+  const [feeds, setFeeds ] = useState(SliderData.data);
   const [isLoading, setLoading] = useState(false);
   const [share, setShare] = useState(false);
   const [clickIndex, setClickIndex] = useState();
   const { scrollYProgress } = useScroll();
   const gallery = useRef();
 
-  useEffect(() => {
-    setLoading(true);
-    const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_KEY}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setFeeds(data.data);
-        setLoading(false);
-      }) 
-  },[])
-  if (isLoading) return <p>Loading...</p>;
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_KEY}`;
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setFeeds(data.data);
+  //       setLoading(false);
+  //     }) 
+  // },[])
+  // if (isLoading) return <p>Loading...</p>;
 
   const responsiveLayout = [
     { breakpoint: 9999, cols: 4, rows: 2, gap: 40, loop: true, autoplay: 10000 },

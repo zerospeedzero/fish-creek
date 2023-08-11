@@ -223,47 +223,47 @@ const Map = () => {
     controlDiv.appendChild(controlUI);
 
    // Create the radio buttons
-    const options = ["All the information","Difficulty", "Road type", "None"];
-    const container = document.createElement("div"); 
-    container.style.padding ='20px';
-    for (let i = 0; i < options.length; i++) {
-      const label = document.createElement("label");
-      label.style.fontSize = '1rem';
-      label.style.color = 'black';
-      const radio = document.createElement("input");
+    // const options = ["All the information","Difficulty", "Road type", "None"];
+    // const container = document.createElement("div"); 
+    // container.style.padding ='20px';
+    // for (let i = 0; i < options.length; i++) {
+    //   const label = document.createElement("label");
+    //   label.style.fontSize = '1rem';
+    //   label.style.color = 'black';
+    //   const radio = document.createElement("input");
 
 
-      radio.addEventListener("change", function() {
-        if (this.checked) {
-          setMapType(this.value.replace(/\s/g,''));
-        }
-      });      
-      radio.type = "radio";
-      radio.name = "selection";
-      radio.value = options[i];
-      if (radio.value == 'None') {radio.checked = true;}
-      label.appendChild(radio);
-      label.appendChild(document.createTextNode(options[i]));
-      container.appendChild(label);
-      container.appendChild(document.createElement("br"));
-    }
+    //   radio.addEventListener("change", function() {
+    //     if (this.checked) {
+    //       setMapType(this.value.replace(/\s/g,''));
+    //     }
+    //   });      
+    //   radio.type = "radio";
+    //   radio.name = "selection";
+    //   radio.value = options[i];
+    //   if (radio.value == 'None') {radio.checked = true;}
+    //   label.appendChild(radio);
+    //   label.appendChild(document.createTextNode(options[i]));
+    //   container.appendChild(label);
+    //   container.appendChild(document.createElement("br"));
+    // }
 
-    const titleDiv = document.createElement("div");
-    const titleUI = document.createElement("img");
-    titleDiv.style.paddingBottom ='20px';
-    titleDiv.style.zIndex ='0';
-    titleDiv.className = 'max-sm:hidden';
-    titleDiv.appendChild(titleUI);
+    // const titleDiv = document.createElement("div");
+    // const titleUI = document.createElement("img");
+    // titleDiv.style.paddingBottom ='20px';
+    // titleDiv.style.zIndex ='0';
+    // titleDiv.className = 'max-sm:hidden';
+    // titleDiv.appendChild(titleUI);
     
     // titleUI.setAttribute('src', 'http://dev.saitnewmedia.ca/~gcheng/fish_creek/title.svg');
-    titleUI.setAttribute('src', '/title.svg');
-    titleUI.setAttribute('alt', 'na');
+    // titleUI.setAttribute('src', '/title.svg');
+    // titleUI.setAttribute('alt', 'na');
     // titleUI.setAttribute('height', '10rem');
-    titleUI.setAttribute('width', '300rem');
+    // titleUI.setAttribute('width', '300rem');
 
-    map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(titleDiv);
+    // map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(titleDiv);
     map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
-    map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(container);
+    // map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(container);
   };
   const onUnmount = () => {
     setMap(null);
