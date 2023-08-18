@@ -12,4 +12,4 @@ I designed and implemented an Interactive map solution in the third semester. It
 
 The website has employed technologies provided by Microsoft Azure Cloud and it follows mobile-first design best practices.
 
-**Website link:** [[https://green-ocean-09524b910.3.azurestaticapps.net](https://green-ocean-09524b910.3.azurestaticapps.net)](https://green-ocean-09524b910.3.azurestaticapps.net)
+**Website link:** https://green-ocean-09524b910.3.azurestaticapps.net
